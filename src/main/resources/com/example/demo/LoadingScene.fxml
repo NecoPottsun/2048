@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.LoadingController">
+   <children>
+      <Text fx:id="headerText" fill="WHITE" layoutX="334.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2048" textAlignment="CENTER" wrappingWidth="231.2386474609375" AnchorPane.bottomAnchor="522.90625" AnchorPane.leftAnchor="334.0" AnchorPane.topAnchor="149.40625">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Text>
+      <ProgressBar fx:id="progressBar" layoutX="282.0" layoutY="621.0" prefHeight="24.0" prefWidth="336.0" progress="0" />
+      <Text fx:id="progressNumber" fill="WHITE" layoutX="430.0" layoutY="617.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0%" textAlignment="CENTER" wrappingWidth="40.13671875" />
+   </children>
+</AnchorPane>
