@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -19,7 +20,7 @@ import java.util.Random;
 class GameScene {
     private static int WIDTH = 900;
     private static int HEIGHT = 700;
-    private static int n = 4;
+    private static int n = 6;
     private final static int distanceBetweenCells = 10;
     private static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     private TextMaker textMaker = TextMaker.getSingleInstance();
@@ -28,7 +29,9 @@ class GameScene {
     private long score = 0;
     private long mergedCellScore = 0;
 
-    static void setN(int number) {
+    private Account account;
+
+    public static void setN(int number) {
         n = number;
         LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     }
@@ -285,26 +288,29 @@ class GameScene {
         }
     }
 
-    public void Game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot) {
+    public void Game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, EndGameController endGameController, Account account) {
         this.root = root;
+        this.account = account;
         // create cells
         createCells();
 
         // create the Texts in the game
-        Text text1 = createText(root,770,100,"SCORE 1: ", 30);
+        Text text1 = createText(root,770,100,"PLAYER: ", 30);
 
-        Text scoreText1 = createText(root,770, 150, "0", 20);
+        Text playerText = createText(root,770, 150, account.getUsername(), 20);
+
 
         // add new mergedCellScore Text
-        Text text2 = createText(root, 770 ,300, "SCORE 2: ", 30);
+        Text text2 = createText(root, 770 ,300, "SCORE : ", 30);
 
         Text mergedCellScoreText = createText(root, 770,350,"0", 20);
 
         // create button to go back to the MenuScene
         Button goBackButton = new Button();
         root.getChildren().add(goBackButton);
-        goBackButton.setText("Go back");
-        goBackButton.relocate(5,10);
+        goBackButton.setText("Back");
+        goBackButton.relocate(10,10);
+        goBackButton.setStyle("-fx-background-color: #c6be4b; -fx-text-fill: #ffffff; -fx-background-radius: 50;");
         goBackOnAction(goBackButton, primaryStage);
 
         randomFillNumber(1);
@@ -330,13 +336,13 @@ class GameScene {
                     isMove = true;
                 }
                 // GameScene.this.sumCellNumbersToScore();
-                scoreText1.setText(score + "");
+//                scoreText1.setText(score + "");
                 mergedCellScoreText.setText(mergedCellScore + "");
 
                 // if a move key is pressed, then random numbers are filled or end the game
                 if(isMove){
                     haveEmptyCell = GameScene.this.haveEmptyCell();
-                    isMoveHandler(haveEmptyCell, primaryStage, endGameScene, endGameRoot);
+                    isMoveHandler(haveEmptyCell, primaryStage, endGameScene, endGameController);
                 }
 
             });
@@ -357,16 +363,18 @@ class GameScene {
         root.getChildren().add(text);
         text.setText(textString);
         text.setFont(Font.font(size));
+        text.setFill(Paint.valueOf("#ddead1"));
         text.relocate(x, y);
         return text;
     }
 
-    private void isMoveHandler(int haveEmptyCell, Stage primaryStage, Scene endGameScene, Group endGameRoot) {
+    private void isMoveHandler(int haveEmptyCell, Stage primaryStage, Scene endGameScene, EndGameController endGameController) {
         if (haveEmptyCell == -1) {
             if (GameScene.this.canNotMove()) {
                 primaryStage.setScene(endGameScene);
-
-                EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, mergedCellScore);
+                // set Account score
+                account.setScore(mergedCellScore);
+                EndGame.getInstance().endGameShow(endGameScene, endGameController, primaryStage, account);
                 root.getChildren().clear();
                 score = 0;
                 mergedCellScore = 0;

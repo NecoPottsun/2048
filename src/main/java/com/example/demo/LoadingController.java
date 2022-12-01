@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -23,14 +24,15 @@ public class LoadingController implements Initializable{
     @FXML
     private ProgressBar progressBar;
 
+
     static final int WIDTH = 900;
     static final int HEIGHT = 700;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        progressBar.setStyle("-fx-accent: #6600ff;");
+        progressBar.setStyle("-fx-accent: #0d750b;");
        increaseProgress();
+
 
     }
     public void increaseProgress() {
@@ -40,7 +42,7 @@ public class LoadingController implements Initializable{
             protected Void call() throws Exception {
                 int steps = 1000;
                 for (int i = 0; i <= steps; i+= 10) {
-                    Thread.sleep(50);
+                    Thread.sleep(100);
                     updateProgress(i, steps);
                     updateMessage(String.valueOf(i));
                     System.out.println(i);
