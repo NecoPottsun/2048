@@ -27,7 +27,8 @@ the Javadoc documentation is located in:
   (**Note**: If the key arrows are not working properly, try pressing `ctrl + key arrow`, for example: `ctrl + key down`)
 - Time counter of each game.
 - Score board of the game: show the high score players achieving from an excel file.
-- 2 modes of game: `easy mode`: 5x5 board , `hard mode`: 4x4 board
+- 2 modes of game: `easy mode`: 5x5 board , `hard mode`: 4x4 board.
+- If the player has the highest score, he/she will be announced when end the game.
 
 ## List of features that are implemented and are not working properly
 

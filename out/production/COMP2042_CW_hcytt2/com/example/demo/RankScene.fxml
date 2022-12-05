@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #658354;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.RankSceneController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #658354;" stylesheets="css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.RankSceneController">
    <children>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="700.0" prefWidth="900.0" spacing="5.0">
          <children>
@@ -36,12 +36,12 @@
             </TableView>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="275.0" spacing="10.0">
                <children>
-                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="46.0" prefWidth="134.0" style="-fx-background-color: #c6be4b; -fx-text-fill: #ffffff; -fx-background-radius: 50;" text="Back">
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="46.0" prefWidth="134.0" stylesheets="@css/style.css" text="Back">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </Button>
-                  <Button fx:id="quitButton" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="46.0" prefWidth="134.0" style="-fx-background-color: #c6be4b; -fx-text-fill: #ffffff; -fx-background-radius: 50;" text="Quit">
+                  <Button fx:id="quitButton" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="46.0" prefWidth="134.0" stylesheets="@css/style.css" text="Quit">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>

@@ -321,6 +321,8 @@ class GameScene {
         // create cells
         createCells();
 
+        // add Stylesheet
+        gameScene.getStylesheets().add(String.valueOf(getClass().getResource("css/style.css")));
 
         // create the Texts in the game
 
@@ -342,7 +344,7 @@ class GameScene {
         root.getChildren().add(goBackButton);
         goBackButton.setText("Back");
         goBackButton.relocate(10,10);
-        goBackButton.setStyle("-fx-background-color: #c6be4b; -fx-text-fill: #ffffff; -fx-background-radius: 50;");
+        goBackButton.getStyleClass().add("button");
         goBackOnAction(goBackButton, primaryStage);
 
         randomFillNumber(1);

@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainAnchorPane" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #658354;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.EndGameController">
+<AnchorPane fx:id="mainAnchorPane" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #658354;" stylesheets="css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.EndGameController">
    <children>
       <Label fx:id="headerText" layoutX="241.0" layoutY="86.0" text="Game Over" textFill="#f5624d">
          <font>
@@ -21,12 +21,12 @@
             <Font size="40.0" />
          </font>
       </Text>
-      <Button fx:id="quitButton" layoutX="463.0" layoutY="523.0" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="46.0" prefWidth="134.0" style="-fx-background-color: #c6be4b; -fx-text-fill: #ffffff; -fx-background-radius: 50;" text="Quit">
+      <Button fx:id="quitButton" layoutX="463.0" layoutY="523.0" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="46.0" prefWidth="134.0" stylesheets="@css/style.css" text="Quit">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Button>
-      <Button fx:id="backButton" layoutX="293.0" layoutY="523.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="46.0" prefWidth="134.0" style="-fx-background-color: #c6be4b; -fx-text-fill: #ffffff; -fx-background-radius: 50;" text="Back">
+      <Button fx:id="backButton" layoutX="293.0" layoutY="523.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="46.0" prefWidth="134.0" stylesheets="@css/style.css" text="Back">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
@@ -41,7 +41,7 @@
             <Image url="@image/tumblr_o52aqu3BLG1ttph68o1_500.gif" />
          </image>
       </ImageView>
-      <Button fx:id="scoreBoardButton" layoutX="371.0" layoutY="450.0" mnemonicParsing="false" onAction="#scoreBoardButtonOnAction" prefHeight="46.0" prefWidth="159.0" style="-fx-background-color: #c6be4b; -fx-text-fill: #ffffff; -fx-background-radius: 50;" text="Score Board">
+      <Button fx:id="scoreBoardButton" layoutX="371.0" layoutY="450.0" mnemonicParsing="false" onAction="#scoreBoardButtonOnAction" prefHeight="46.0" prefWidth="159.0" stylesheets="@css/style.css" text="Score Board">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
