@@ -102,6 +102,10 @@ public class AccountDao implements Dao<Account>{
                         double score = cell.getNumericCellValue();
                         account.setScore(score);
                     }
+                    if(cell.getColumnIndex() == 3){
+                        String playTime = cell.getStringCellValue();
+                        account.setPlayTime(playTime);
+                    }
 
                 }
                 accounts.add(account);
@@ -130,21 +134,9 @@ public class AccountDao implements Dao<Account>{
         row.getCell(1).setCellValue(account.getUsername());
         row.createCell(2);
         row.getCell(2).setCellValue(account.getScore());
-//        for(int i = 0; i < cellNumber; i++){
-//            // Create new cell
-//            HSSFCell cell = row.createCell(i);
-//            // Assign data into the cell
-//            if(i == 0){
-//                cell.setCellValue(account.getId());
-//            }
-//            else if (i == 1){
-//                cell.setCellValue(account.getUsername());
-//            }
-//            else if (i == 2){
-//                cell.setCellValue(account.getScore());
-//            }
-//
-//        }
+        row.createCell(3);
+        row.getCell(3).setCellValue(account.getPlayTime());
+
         updatedExcelFile();
     }
 

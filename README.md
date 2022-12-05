@@ -20,6 +20,9 @@ the Javadoc documentation is located in:
 ## List of features that are implemented and are working
 
 - Loading process when open the game.
+- The player now can choose the background color for their Game Screen.
+- The player now can move the cells either by WASD or key arrows.
+  (Note: If the key arrows not working properly, try pressing `ctrl + key arrow`, for example: `ctrl + key down`)
 - Score board of the game: show the high score players achieving from an excel file.
 - 2 modes of game: `easy mode`: 5x5 board , `hard mode`: 4x4 board
 
@@ -41,7 +44,8 @@ the Javadoc documentation is located in:
 - EndGameController.java
 - RankSceneController.java
 - Interface Dao<T>.java
-- AccountDao.java class
+- AccountDao.java
+- AccountDaoTest.java 
  
 ## List of modified Java classes 
 

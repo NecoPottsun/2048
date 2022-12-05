@@ -19,6 +19,7 @@ public class Account implements Comparable<Account>{
     private long id;
     private String username;
     private double score = 0;
+    private String playTime = "";
 
 
     public Account() {
@@ -63,13 +64,12 @@ public class Account implements Comparable<Account>{
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", score=" + score +
-                '}';
+    public String getPlayTime() {
+        return playTime;
+    }
+
+    public void setPlayTime(String playTime) {
+        this.playTime = playTime;
     }
 
     @Override
@@ -78,6 +78,15 @@ public class Account implements Comparable<Account>{
         return this.score > o.score ? -1 : this.score < o.score ? 1 : 0;
     }
 
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", score=" + score +
+                ", playTime='" + playTime + '\'' +
+                '}';
+    }
 //    private long score = 0;
 //    private String Username ;
 //    private static ArrayList<Account> accounts = new ArrayList<>();

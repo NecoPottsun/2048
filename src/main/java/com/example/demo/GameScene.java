@@ -15,7 +15,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.Key;
+import java.text.DecimalFormat;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 class GameScene {
     private static int WIDTH = 900;
@@ -29,6 +33,18 @@ class GameScene {
     private Group root;
     private long score = 0;
     private long mergedCellScore = 0;
+
+    private Timer timer;
+    private TimerTask task;
+    private Text timeText;
+    private int second, minute;
+    private String ddSecond, ddMinute;
+    private String playTime;
+    private DecimalFormat dFormat = new DecimalFormat("00");
+    private Stage primaryStage;
+    private Scene endGameScene;
+    private EndGameController endGameController;
+
 
     private Account account;
 
@@ -299,10 +315,18 @@ class GameScene {
     public void Game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, EndGameController endGameController, Account account) {
         this.root = root;
         this.account = account;
+        this.primaryStage = primaryStage;
+        this.endGameScene = endGameScene;
+        this.endGameController = endGameController;
         // create cells
         createCells();
 
+
         // create the Texts in the game
+
+        // Time Text
+        timeText = createText(root, 780, 50, "00:00", 25);
+
         Text text1 = createText(root,770,100,"PLAYER: ", 30);
 
         Text playerText = createText(root,770, 150, account.getUsername(), 20);
@@ -310,7 +334,6 @@ class GameScene {
 
         // add new mergedCellScore Text
         Text text2 = createText(root, 770 ,300, "SCORE : ", 30);
-
         Text mergedCellScoreText = createText(root, 770,350,"0", 20);
 
         // create button to go back to the MenuScene
@@ -325,37 +348,69 @@ class GameScene {
         randomFillNumber(1);
         randomFillNumber(1);
 
+
+        // Time
+        second = 0;
+        simpleTimer();
+
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key ->{
             Platform.runLater(() -> {
+                boolean isMove;
                 int haveEmptyCell;
-                boolean isMove = false;
-//                    System.out.println(key.getCode());
-                // Since the arrow keys cant work well (u have to press (ctrl + arrow_key) to work it), I'll add the WASD for handle it
-                if (key.getCode() == KeyCode.DOWN || key.getCode() == KeyCode.S) {
-                    GameScene.this.moveDown();
-                    isMove = true;
-                } else if (key.getCode() == KeyCode.UP || key.getCode() == KeyCode.W) {
-                    GameScene.this.moveUp();
-                    isMove = true;
-                } else if (key.getCode() == KeyCode.LEFT || key.getCode() == KeyCode.A) {
-                    GameScene.this.moveLeft();
-                    isMove = true;
-                } else if (key.getCode() == KeyCode.RIGHT || key.getCode() == KeyCode.D) {
-                    GameScene.this.moveRight();
-                    isMove = true;
-                }
-                // GameScene.this.sumCellNumbersToScore();
-//                scoreText1.setText(score + "");
+                isMove = keyPressHandler(key);
                 mergedCellScoreText.setText(mergedCellScore + "");
-
                 // if a move key is pressed, then random numbers are filled or end the game
                 if(isMove){
                     haveEmptyCell = GameScene.this.haveEmptyCell();
-                    isMoveHandler(haveEmptyCell, primaryStage, endGameScene, endGameController);
+                    isMoveHandler(haveEmptyCell);
                 }
 
             });
         });
+    }
+    public void simpleTimer(){
+        timer = new Timer();
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                second++;
+                ddSecond = dFormat.format(second);
+                ddMinute = dFormat.format(minute);
+                timeText.setText(ddMinute + ":" + ddSecond);
+                if(second == 60){
+                    second = 0;
+                    minute++;
+                    timeText.setText(ddMinute + ":" + ddSecond);
+
+                }
+
+            }
+        };
+        timer.scheduleAtFixedRate(task,0,1000);
+
+
+    }
+    private Boolean keyPressHandler(KeyEvent key) {
+
+        // Since the arrow keys cant work well (u have to press (ctrl + arrow_key) to work it), I'll add the WASD for handle it
+        if (key.getCode() == KeyCode.DOWN || key.getCode() == KeyCode.S) {
+            GameScene.this.moveDown();
+            return true;
+        } else if (key.getCode() == KeyCode.UP || key.getCode() == KeyCode.W) {
+            GameScene.this.moveUp();
+            return  true;
+        } else if (key.getCode() == KeyCode.LEFT || key.getCode() == KeyCode.A) {
+            GameScene.this.moveLeft();
+            return  true;
+        } else if (key.getCode() == KeyCode.RIGHT || key.getCode() == KeyCode.D) {
+            GameScene.this.moveRight();
+            return  true;
+        }
+        return false;
+        // GameScene.this.sumCellNumbersToScore();
+//                scoreText1.setText(score + "");
+
+
     }
 
     private void createCells(){
@@ -377,12 +432,15 @@ class GameScene {
         return text;
     }
 
-    private void isMoveHandler(int haveEmptyCell, Stage primaryStage, Scene endGameScene, EndGameController endGameController) {
+    private void isMoveHandler(int haveEmptyCell) {
         if (haveEmptyCell == -1) {
             if (GameScene.this.canNotMove()) {
                 primaryStage.setScene(endGameScene);
                 // set Account score
                 account.setScore(mergedCellScore);
+                timer.cancel();
+                playTime = ddMinute + ":"  + ddSecond;
+                account.setPlayTime(playTime);
                 EndGame.getInstance().endGameShow(endGameScene, endGameController, primaryStage, account);
                 root.getChildren().clear();
                 score = 0;

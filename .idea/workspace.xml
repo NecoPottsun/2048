@@ -5,24 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14861539-f543-4a4a-bcd8-63f0b6176609" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/AccountDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/COMP2042_CW_hcytt2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/COMP2042_CW_hcytt2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/AccountDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/AccountDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/MenuController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/data/account.xls" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/data/account.xls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/module-info.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/AccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/AccountDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/EndGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/EndGameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/RankSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/RankSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/EndGameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/EndGameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/RankScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/RankScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/data/account.xls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/data/account.xls" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +67,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
@@ -207,7 +202,8 @@
       <workItem from="1670060918480" duration="608000" />
       <workItem from="1670078910937" duration="7143000" />
       <workItem from="1670214873166" duration="2546000" />
-      <workItem from="1670226838740" duration="5844000" />
+      <workItem from="1670226838740" duration="14122000" />
+      <workItem from="1670244081251" duration="6474000" />
     </task>
     <servers />
   </component>
@@ -224,5 +220,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalStateException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

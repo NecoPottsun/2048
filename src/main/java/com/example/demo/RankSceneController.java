@@ -31,15 +31,16 @@ public class RankSceneController implements Initializable {
    @FXML
    private TableColumn<Account, String> usernameColumn;
    @FXML
-
    private TableColumn<Account, Integer> scoreColumn;
-
+    @FXML
+    private TableColumn<Account, String> timeColumn;
    private ObservableList<Account> accountObservableList = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AccountDao.getInstance();
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
+        timeColumn.setCellValueFactory(new PropertyValueFactory<>("playTime"));
 //        usernameColumn.setCellValueFactory(cellData -> cellData.getValue().getUsername());
 
         for(Account account : AccountDao.getInstance().GetSortList()){

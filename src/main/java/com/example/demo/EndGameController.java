@@ -36,6 +36,8 @@ public class EndGameController implements Initializable {
     @FXML
     private Text scoreText;
 
+    @FXML
+    private Text timePlayText;
 
     @FXML
     private Button backButton;
@@ -84,7 +86,9 @@ public class EndGameController implements Initializable {
     void initData(Account account){
   //      mainAnchorPane.setStyle("-fx-background-color:  " + pickedColor);
         System.out.println(account.getId());
+        System.out.println(account.getPlayTime());
         scoreText.setText("Your score: " + account.getScore());
+        timePlayText.setText("Time: " + account.getPlayTime());
         // add to excel
         AccountDao.getInstance().add(account);
     }
