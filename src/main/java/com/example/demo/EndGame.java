@@ -6,8 +6,7 @@ import javafx.stage.Stage;
 
 
 public class EndGame {
-    private static int WIDTH = 900;
-    private static int HEIGHT = 700;
+
     private static EndGame singleInstance = null;
     private EndGame(){
 

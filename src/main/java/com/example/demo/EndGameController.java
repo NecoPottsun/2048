@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -22,6 +23,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -29,7 +31,9 @@ public class EndGameController implements Initializable {
     private static int WIDTH = 900;
     private static int HEIGHT = 700;
     private Stage primaryStage;
-
+    private Account account;
+    @FXML
+    private HBox congratulationHBox;
 
     @FXML
     private AnchorPane mainAnchorPane;
@@ -87,10 +91,21 @@ public class EndGameController implements Initializable {
   //      mainAnchorPane.setStyle("-fx-background-color:  " + pickedColor);
         System.out.println(account.getId());
         System.out.println(account.getPlayTime());
+        this.account = account;
         scoreText.setText("Your score: " + account.getScore());
         timePlayText.setText("Time: " + account.getPlayTime());
         // add to excel
         AccountDao.getInstance().add(account);
+
+        checkFirstRank();
+    }
+
+    private void checkFirstRank() {
+        List<Account> accounts = AccountDao.getInstance().GetSortList();
+        if (account.getId() == accounts.get(0).getId() && account.getUsername().equals(accounts.get(0).getUsername()) && account.getScore() == accounts.get(0).getScore() &&
+                account.getPlayTime().equals(accounts.get(0).getPlayTime())) {
+            congratulationHBox.setVisible(true);
+        }
     }
 
     @FXML

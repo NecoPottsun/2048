@@ -7,16 +7,10 @@
     <list default="true" id="14861539-f543-4a4a-bcd8-63f0b6176609" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/data/account.xls" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/data/account.xls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/AccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/AccountDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/EndGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/EndGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/EndGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/EndGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/RankSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/RankSceneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/EndGameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/EndGameScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/RankScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/RankScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/data/account.xls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/data/account.xls" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,40 +44,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Library/Java/JUnit/hamcrest-all-1.3.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "D:/Documents/VS code/Java/Software Maintanance/COMP2042_CW_hcytt2/src/main/resources/com/example/demo/image",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\image" />
       <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\library" />
       <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\data" />
       <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\music" />
-      <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\image" />
       <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\music" />
       <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\image" />
+      <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\music" />
       <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo" />
       <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\fxml" />
     </key>
@@ -203,7 +197,7 @@
       <workItem from="1670078910937" duration="7143000" />
       <workItem from="1670214873166" duration="2546000" />
       <workItem from="1670226838740" duration="14122000" />
-      <workItem from="1670244081251" duration="6474000" />
+      <workItem from="1670244081251" duration="9380000" />
     </task>
     <servers />
   </component>

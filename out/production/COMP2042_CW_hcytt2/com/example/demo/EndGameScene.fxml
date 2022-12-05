@@ -5,17 +5,13 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainAnchorPane" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #0F8A5F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.EndGameController">
+<AnchorPane fx:id="mainAnchorPane" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #658354;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.EndGameController">
    <children>
-      <ImageView fitHeight="730.0" fitWidth="920.0" layoutX="-5.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/kieran-white-SBdmQcW8qag-unsplash.jpg" />
-         </image>
-      </ImageView>
-      <Label layoutX="241.0" layoutY="86.0" text="Game Over" textFill="#f5624d">
+      <Label fx:id="headerText" layoutX="241.0" layoutY="86.0" text="Game Over" textFill="#f5624d">
          <font>
             <Font name="System Bold" size="80.0" />
          </font>
@@ -55,5 +51,24 @@
             <Font size="33.0" />
          </font>
       </Text>
+      <HBox fx:id="congratulationHBox" layoutX="273.0" layoutY="193.0" prefHeight="37.0" prefWidth="200.0" visible="false">
+         <children>
+            <ImageView fx:id="sparkleImage1" fitHeight="28.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/sparkles.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="congratulationText" fill="#f2d938" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations! you're the top one">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="sparkleImage2" fitHeight="28.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/sparkles.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
