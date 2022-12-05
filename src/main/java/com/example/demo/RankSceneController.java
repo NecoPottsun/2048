@@ -42,7 +42,7 @@ public class RankSceneController implements Initializable {
         scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
 //        usernameColumn.setCellValueFactory(cellData -> cellData.getValue().getUsername());
 
-        for(Account account : AccountDao.getInstance().getAccounts()){
+        for(Account account : AccountDao.getInstance().GetSortList()){
             accountObservableList.add(account);
         }
         scoreTable.setItems(accountObservableList);

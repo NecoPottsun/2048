@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
+/**
+ * Each account will have attributes: id,username,score
+ */
 public class Account implements Comparable<Account>{
     private long id;
     private String username;

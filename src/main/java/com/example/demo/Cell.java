@@ -6,20 +6,28 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+
+/**
+ * Cell class is created in the GameScene, each cell has (double x, double y, double scale, Group root)
+ * that is presented in the GameScene. (x,y) is the position of the Cell, scale is the width and height
+ * of the cell
+ */
 public class Cell {
     private Rectangle rectangle;
     private Group root;
     private Text textClass;
     private boolean modify = false;
 
-    void setModify(boolean modify) {
-        this.modify = modify;
-    }
-
-    boolean getModify() {
-        return modify;
-    }
-
+    /**
+     * This is the constructor of a Cell, whenever create the new Cell in the root
+     * it will create a new rectangle with position (x,y) , width & height = to the scale,
+     * default color gray,
+     * and the text inside the cell initially set to 0
+     * @param x
+     * @param y
+     * @param scale
+     * @param root
+     */
     Cell(double x, double y, double scale, Group root) {
         rectangle = new Rectangle();
         rectangle.setX(x);
@@ -32,10 +40,36 @@ public class Cell {
         root.getChildren().add(rectangle);
     }
 
+    double getX() {
+        return rectangle.getX();
+    }
+
+    double getY() {
+        return rectangle.getY();
+    }
+
+    int getNumber() {
+        return Integer.parseInt(textClass.getText());
+    }
+    private Text getTextClass() {
+        return textClass;
+    }
     void setTextClass(Text textClass) {
         this.textClass = textClass;
     }
+    void setModify(boolean modify) {
+        this.modify = modify;
+    }
 
+    boolean getModify() {
+        return modify;
+    }
+
+    /**
+     * This method is to change the value and the color inside the cell whenever the
+     * cell in the GameScene is created or merged
+     * @param cell
+     */
     void changeCell(Cell cell) {
         TextMaker.changeTwoText(textClass, cell.getTextClass());
         root.getChildren().remove(cell.getTextClass());
@@ -51,6 +85,13 @@ public class Cell {
         cell.setColorByNumber(cell.getNumber());
     }
 
+    /**
+     * adder() method is handle the merged cells
+     *. Whenever the cell is merged with another cell
+     * which have the same value, then 2 cells' value sum up,
+     * and set the color of the cell by the new value.
+     * @param cell
+     */
     void adder(Cell cell) {
         cell.getTextClass().setText((cell.getNumber() + this.getNumber()) + "");
         textClass.setText("0");
@@ -59,6 +100,11 @@ public class Cell {
         setColorByNumber(getNumber());
     }
 
+    /**
+     * This method is set the color to the cell base on the
+     * value of the cell in the GameScene
+     * @param number
+     */
     void setColorByNumber(int number) {
         switch (number) {
             case 0:
@@ -102,20 +148,6 @@ public class Cell {
 
     }
 
-    double getX() {
-        return rectangle.getX();
-    }
 
-    double getY() {
-        return rectangle.getY();
-    }
-
-    int getNumber() {
-        return Integer.parseInt(textClass.getText());
-    }
-
-    private Text getTextClass() {
-        return textClass;
-    }
 
 }

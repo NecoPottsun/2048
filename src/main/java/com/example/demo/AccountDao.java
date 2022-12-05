@@ -11,13 +11,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * AccountDao.class is used to handle the functions that achieve data from the excel file
+ * as well as write data to the file, so that we can also add and delete a specific account entity
+ * in the file.
+ */
 public class AccountDao implements Dao<Account>{
 
 
     private List<Account> accounts = new ArrayList<>();
     private static AccountDao instance;
 
-    private HSSFWorkbook workbook;
+    private static HSSFWorkbook workbook;
     private HSSFSheet sheet;
 
     private File file;
@@ -26,11 +31,17 @@ public class AccountDao implements Dao<Account>{
 
     private int rowNumber = 0;
     private int cellNumber = 0;
+
     private AccountDao(){
         excelAcess("data/account.xls");
+        // Achieve account list
         getAll();
     }
 
+    /**
+     AccountDao.java follows the Singleton, because it only need to be
+     created once
+     */
     // Apply Singleton for AccountDao
     public static AccountDao getInstance(){
         if(instance == null){
@@ -43,11 +54,14 @@ public class AccountDao implements Dao<Account>{
         return accounts;
     }
 
+    /**
+     Find the account in the AccountList by using the account's id
+     */
     @Override
     public Account findById(long id) {
         for(Account account : accounts){
             if(account.getId() == id){
-                System.out.println("Account achieved");
+//                System.out.println("Account achieved");
                 return account;
             }
         }
@@ -55,9 +69,11 @@ public class AccountDao implements Dao<Account>{
         return null;
     }
 
+    /**
+     Retrieve all the account data from the Excel file
+     * */
     @Override
     public List<Account> getAll() {
-
         for(Row row: sheet)
         {
             rowNumber++;
@@ -98,32 +114,46 @@ public class AccountDao implements Dao<Account>{
         return accounts;
     }
 
+    /**
+     * Add a new account to the excel file
+     * @param account
+     */
     @Override
     public void add(Account account) {
         // create a new row
         HSSFRow row = sheet.createRow(rowNumber + 1);
 
         // Create new cell  and put the data into the cell
-        for(int i = 0; i < cellNumber; i++){
-            // Create new cell
-            HSSFCell cell = row.createCell(i);
-            // Assign data into the cell
-            if(i == 0){
-                cell.setCellValue(account.getId());
-            }
-            else if (i == 1){
-                cell.setCellValue(account.getUsername());
-            }
-            else if (i == 2){
-                cell.setCellValue(account.getScore());
-            }
-
-        }
+        row.createCell(0);
+        row.getCell(0).setCellValue(account.getId());
+        row.createCell(1);
+        row.getCell(1).setCellValue(account.getUsername());
+        row.createCell(2);
+        row.getCell(2).setCellValue(account.getScore());
+//        for(int i = 0; i < cellNumber; i++){
+//            // Create new cell
+//            HSSFCell cell = row.createCell(i);
+//            // Assign data into the cell
+//            if(i == 0){
+//                cell.setCellValue(account.getId());
+//            }
+//            else if (i == 1){
+//                cell.setCellValue(account.getUsername());
+//            }
+//            else if (i == 2){
+//                cell.setCellValue(account.getScore());
+//            }
+//
+//        }
         updatedExcelFile();
     }
 
 
-
+    /**
+     * delete an account in the excel file
+     * @param account
+     * @return
+     */
     @Override
     public Boolean delete(Account account) {
         for(Row row : sheet){
@@ -146,16 +176,26 @@ public class AccountDao implements Dao<Account>{
 
     }
 
+    /**
+     * Print out all the accounts in the list in the system
+     * @param accountList
+     */
     public void PrintList(List<Account> accountList){
         for(Account account : accountList){
             System.out.println(account.toString());
         }
     }
+
+    /**
+     * The method is to overwrite the excel file.
+     * Whenever there is any change to the list of account
+     * , it is used to update the data in the excel file.
+     */
     private void updatedExcelFile() {
         try {
             out = new FileOutputStream(file);
             workbook.write(out);
-            workbook.close();
+ //           workbook.close();
             System.out.println("Excel file updated");
             out.flush();
             out.close();
@@ -170,10 +210,18 @@ public class AccountDao implements Dao<Account>{
         }
 
     }
+
+    /**
+     *This function is to open the excel file and then read
+     * every data in the first sheet
+     * */
     private void excelAcess(String path){
         URL url = getClass().getResource(path);
         try {
             file = new File(url.toURI());
+            if(!file.exists()){
+                file.createNewFile();
+            }
             fis=new FileInputStream(file);
             //creating workbook instance that refers to .xls file
             workbook =new HSSFWorkbook(fis);
@@ -189,6 +237,16 @@ public class AccountDao implements Dao<Account>{
         }
 
     }
+
+    /**
+     * Sort the account list by score in DESCENDING order
+     * @return accounts
+     */
+    public List<Account> GetSortList(){
+        Collections.sort(accounts);
+        return accounts;
+    }
+
 
 
 }

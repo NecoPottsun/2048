@@ -31,8 +31,8 @@ public class MenuController implements Initializable {
     private Scene currentScene;
     private Parent parentRoot;
 
-    private static int EASY = 4;
-    private static int HARD = 6;
+    private static int HARD = 4;
+    private static int EASY = 5;
 
     private GameScene game;
 
@@ -123,6 +123,8 @@ public class MenuController implements Initializable {
         // Initialize a new game
         this.game = new GameScene();
         this.game.setN(level);
+        System.out.println("Size = " + this.game.getN());
+        System.out.println("LENGTH = " + this.game.getLENGTH());
 
         long newAccountId = AccountDao.getInstance().getAccounts().size() + 1;
         String newAccountUsername = usernameTextField.getText();

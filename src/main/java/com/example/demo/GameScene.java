@@ -20,11 +20,12 @@ import java.util.Random;
 class GameScene {
     private static int WIDTH = 900;
     private static int HEIGHT = 700;
-    private static int n = 6;
+    private static int n = 5;
     private final static int distanceBetweenCells = 10;
-    private static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
+    private static double LENGTH;
+ //   private static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     private TextMaker textMaker = TextMaker.getSingleInstance();
-    private Cell[][] cells = new Cell[n][n];
+    private static Cell[][] cells;
     private Group root;
     private long score = 0;
     private long mergedCellScore = 0;
@@ -34,6 +35,10 @@ class GameScene {
     public static void setN(int number) {
         n = number;
         LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
+        cells = new Cell[n][n];
+    }
+    public static int getN(){
+        return n;
     }
 
     static double getLENGTH() {
@@ -208,6 +213,7 @@ class GameScene {
     private void moveHorizontally(int i, int j, int des, int sign) {
         if (isMergedHorizontally(i, j, des, sign)) {
             cells[i][j].adder(cells[i][des + sign]);
+            System.out.println("Move horizontally");
             cells[i][des].setModify(true);
         } else if (des != j) {
             cells[i][j].changeCell(cells[i][des]);
@@ -247,6 +253,8 @@ class GameScene {
         if (isMergedVertically(i, j, des, sign)) {
             cells[i][j].adder(cells[des + sign][j]);
             cells[des][j].setModify(true);
+            System.out.println("Move horizontally");
+  //          System.out.printf("[%d,%d] merged = %d\n", des + sign, j, cells[des + sign][j].getNumber()+ cells[i][j].getNumber());
         } else if (des != i) {
             cells[i][j].changeCell(cells[des][j]);
         }
@@ -307,6 +315,7 @@ class GameScene {
 
         // create button to go back to the MenuScene
         Button goBackButton = new Button();
+
         root.getChildren().add(goBackButton);
         goBackButton.setText("Back");
         goBackButton.relocate(10,10);
