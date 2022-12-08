@@ -8,10 +8,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -46,7 +48,7 @@
             </RadialGradient>
          </fill>
       </Text>
-      <ColorPicker fx:id="colorPicker" layoutX="797.0" layoutY="14.0" onAction="#colorPickerOnAction" prefHeight="22.0" prefWidth="89.0" />
+      <ColorPicker fx:id="colorPicker" layoutX="789.0" layoutY="128.0" onAction="#colorPickerOnAction" prefHeight="22.0" prefWidth="89.0" />
       <TextField fx:id="usernameTextField" layoutX="357.0" layoutY="434.0" prefHeight="35.0" prefWidth="242.0" promptText="Player 1" style="-fx-background-radius: 50;" />
       <VBox alignment="CENTER" layoutX="358.0" layoutY="475.0" prefHeight="200.0" prefWidth="229.0" spacing="10.0">
          <children>
@@ -76,5 +78,8 @@
             </Button>
          </children>
       </VBox>
+      <Pane fx:id="musicPane" layoutX="619.0" layoutY="40.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 18px;" visible="false" />
+      <Rectangle fx:id="backgroundColorRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="35.0" layoutX="739.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="38.0" />
+      <Button fx:id="openMusicPaneButton" layoutX="770.0" layoutY="14.0" mnemonicParsing="false" onAction="#openMusicPaneButtonOnAction" prefHeight="26.0" prefWidth="100.0" stylesheets="@css/style.css" text="Music" />
    </children>
 </AnchorPane>

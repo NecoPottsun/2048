@@ -11,16 +11,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -30,6 +32,8 @@ public class MenuController implements Initializable {
     private Stage primaryStage;
     private Scene currentScene;
     private Parent parentRoot;
+
+    static MediaPlayer mediaPlayer;
 
     private static int HARD = 4;
     private static int EASY = 5;
@@ -48,12 +52,51 @@ public class MenuController implements Initializable {
     private ColorPicker colorPicker;
     @FXML
     private TextField usernameTextField;
+
+    @FXML
+    private Rectangle backgroundColorRectangle;
+
+    @FXML
+    private Pane musicPane;
+
+    @FXML
+    private MusicPaneController musicPaneController;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colorPicker.setValue(Color.valueOf(colorPicked));
+        backgroundColorRectangle.setFill(Paint.valueOf(colorPicked));
 
 
 
+
+    }
+    public void init(){
+   //     String path = "music/soundtrack1.mp3";
+    //    MusicPaneController.playSoundtrack(SoundtrackDatabase.getInstance().getSoundtrackAtPosition(1));
+//        MusicPaneController.playSoundtrack(SoundtrackDatabase.getInstance().getSoundtrackAtPosition(0));
+    }
+    public static void loadMusicPane (Pane pane)  {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        Pane newLoadedPane = null;
+        try {
+            System.out.println("Loaded Music Pane");
+            newLoadedPane = fxmlLoader.load(MenuController.class.getResource("MusicPane.fxml"));
+            pane.getChildren().add(newLoadedPane);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    @FXML
+    protected  void openMusicPaneButtonOnAction(ActionEvent event){
+        loadMusicPane(musicPane);
+        if(musicPane.isVisible()){
+            musicPane.setVisible(false);
+        }
+        else{
+            musicPane.setVisible(true);
+        }
     }
 
     @FXML
@@ -64,6 +107,7 @@ public class MenuController implements Initializable {
         colorPicked = colorPicker.getValue().toString();
 //        System.out.println(colorPicked);
         pane.setBackground(new Background(new BackgroundFill(Paint.valueOf(colorPicked), CornerRadii.EMPTY, Insets.EMPTY)));
+        backgroundColorRectangle.setFill(Paint.valueOf(colorPicked));
 
 
     }
@@ -99,7 +143,9 @@ public class MenuController implements Initializable {
         this.primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Main.class.getResource("RankScene.fxml"));
+
         Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
+        RankSceneController rankSceneController = fxmlLoader.getController();
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
@@ -155,7 +201,6 @@ public class MenuController implements Initializable {
       //  this.game.setN(level);
         this.game.Game(gameScene, gameRoot, primaryStage, endGameScene, endGameController, account);
         this.primaryStage.setScene(gameScene);
-
 
     }
 

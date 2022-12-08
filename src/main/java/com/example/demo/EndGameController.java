@@ -14,6 +14,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -57,6 +59,10 @@ public class EndGameController implements Initializable {
 
     @FXML
     private ImageView purpleJuminoIcon;
+
+    @FXML
+    private Pane musicPane;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        TranslateTransition translate = new TranslateTransition();
@@ -66,6 +72,7 @@ public class EndGameController implements Initializable {
 //        translate.setByX(WIDTH-200);
 //        translate.setAutoReverse(true);
 //        translate.play();
+        MenuController.loadMusicPane(musicPane);
 
         TranslateTransition translate1 = new TranslateTransition();
         translate1.setNode(blueJuminoIcon);
@@ -100,11 +107,13 @@ public class EndGameController implements Initializable {
         checkFirstRank();
     }
 
-    private void checkFirstRank() {
-        List<Account> accounts = AccountDao.getInstance().GetSortList();
-        if (account.getId() == accounts.get(0).getId() && account.getUsername().equals(accounts.get(0).getUsername()) && account.getScore() == accounts.get(0).getScore() &&
-                account.getPlayTime().equals(accounts.get(0).getPlayTime())) {
-            congratulationHBox.setVisible(true);
+    @FXML
+    protected  void openMusicPaneButtonOnAction(ActionEvent event){
+        if(musicPane.isVisible()){
+            musicPane.setVisible(false);
+        }
+        else{
+            musicPane.setVisible(true);
         }
     }
 
@@ -113,6 +122,7 @@ public class EndGameController implements Initializable {
         this.primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Main.class.getResource("RankScene.fxml"));
+        RankSceneController rankSceneController = fxmlLoader.getController();
         Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
@@ -133,6 +143,7 @@ public class EndGameController implements Initializable {
             fxmlLoader.setLocation(Main.class.getResource("MenuScene.fxml"));
             try {
                 Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
+                MenuController menuController = fxmlLoader.getController();
                 primaryStage.setScene(scene);
                 primaryStage.setResizable(false);
                 primaryStage.show();
@@ -156,5 +167,11 @@ public class EndGameController implements Initializable {
 
     }
 
-
+    private void checkFirstRank() {
+        List<Account> accounts = AccountDao.getInstance().GetSortList();
+        if (account.getId() == accounts.get(0).getId() && account.getUsername().equals(accounts.get(0).getUsername()) && account.getScore() == accounts.get(0).getScore() &&
+                account.getPlayTime().equals(accounts.get(0).getPlayTime())) {
+            congratulationHBox.setVisible(true);
+        }
+    }
 }

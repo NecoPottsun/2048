@@ -8,11 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -34,9 +33,15 @@ public class RankSceneController implements Initializable {
    private TableColumn<Account, Integer> scoreColumn;
     @FXML
     private TableColumn<Account, String> timeColumn;
+
+    @FXML
+    private Pane musicPane;
+
+    private MediaPlayer mediaPlayer;
    private ObservableList<Account> accountObservableList = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        MenuController.loadMusicPane(musicPane);
         AccountDao.getInstance();
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
@@ -48,6 +53,16 @@ public class RankSceneController implements Initializable {
         }
         scoreTable.setItems(accountObservableList);
     }
+    @FXML
+    protected  void openMusicPaneButtonOnAction(ActionEvent event){
+        if(musicPane.isVisible()){
+            musicPane.setVisible(false);
+        }
+        else{
+            musicPane.setVisible(true);
+        }
+    }
+
 
     @FXML
     protected void backButtonOnAction(ActionEvent event){
@@ -63,6 +78,7 @@ public class RankSceneController implements Initializable {
             fxmlLoader.setLocation(Main.class.getResource("MenuScene.fxml"));
             try {
                 Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
+                MenuController menuController = fxmlLoader.getController();
                 primaryStage.setScene(scene);
                 primaryStage.setResizable(false);
                 primaryStage.show();
@@ -85,4 +101,5 @@ public class RankSceneController implements Initializable {
         }
 
     }
+
 }

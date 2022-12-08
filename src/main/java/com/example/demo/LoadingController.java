@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Menu;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -80,7 +81,11 @@ public class LoadingController implements Initializable{
         primaryStage = (Stage) pane.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Main.class.getResource("MenuScene.fxml"));
+
         Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
+        MenuController menuController = fxmlLoader.getController();
+        MusicPaneController.playSoundtrack(SoundtrackDatabase.getInstance().getSoundtrackAtPosition(0));
+        menuController.init();
         this.primaryStage.setScene(scene);
 
     }

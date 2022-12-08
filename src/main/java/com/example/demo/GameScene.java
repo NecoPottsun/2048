@@ -9,13 +9,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.security.Key;
 import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.Timer;
@@ -47,6 +48,7 @@ class GameScene {
 
 
     private Account account;
+
 
     public static void setN(int number) {
         n = number;
@@ -324,19 +326,33 @@ class GameScene {
         // add Stylesheet
         gameScene.getStylesheets().add(String.valueOf(getClass().getResource("css/style.css")));
 
-        // create the Texts in the game
+        // musicPane
+        Pane musicPane = new Pane();
+        musicPane.setStyle("-fx-background-color: #ffffff");
+        musicPane.setPrefSize(250,70);
+        musicPane.relocate(650, 40);
+        musicPane.setVisible(false);
+        root.getChildren().add(musicPane);
+
+        // Open music button
+        Button openMusicPaneButton = new Button();
+        root.getChildren().add(openMusicPaneButton);
+        openMusicPaneButton.setText("Music");
+        openMusicPaneButton.relocate(850,10);
+        openMusicPaneButton.getStyleClass().add("button");
+        openMusicPaneOnAction(openMusicPaneButton, musicPane);
+
+        MenuController.loadMusicPane(musicPane);
 
         // Time Text
-        timeText = createText(root, 780, 50, "00:00", 25);
-
-        Text text1 = createText(root,770,100,"PLAYER: ", 30);
-
-        Text playerText = createText(root,770, 150, account.getUsername(), 20);
+        timeText = createText(root, 790, 120, "00:00", 25);
+        Text text1 = createText(root,770,170,"PLAYER: ", 30);
+        Text playerText = createText(root,770, 220, account.getUsername(), 20);
 
 
         // add new mergedCellScore Text
-        Text text2 = createText(root, 770 ,300, "SCORE : ", 30);
-        Text mergedCellScoreText = createText(root, 770,350,"0", 20);
+        Text text2 = createText(root, 770 ,270, "SCORE : ", 30);
+        Text mergedCellScoreText = createText(root, 770,320,"0", 20);
 
         // create button to go back to the MenuScene
         Button goBackButton = new Button();
@@ -461,6 +477,19 @@ class GameScene {
             }
         });
     }
+    private void openMusicPaneOnAction(Button openMusicPaneButton, Pane musicPane){
+        openMusicPaneButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if(musicPane.isVisible()){
+                    musicPane.setVisible(false);
+                }
+                else{
+                    musicPane.setVisible(true);
+                }
+            }
+        });
+    }
 
     private void goBackToTheMenu(Stage primaryStage){
 
@@ -468,6 +497,7 @@ class GameScene {
         fxmlLoader.setLocation(Main.class.getResource("MenuScene.fxml"));
         try {
             Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
+            MenuController menuController = fxmlLoader.getController();
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();
@@ -476,4 +506,5 @@ class GameScene {
         }
 
     }
+
 }

@@ -6,6 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -70,5 +71,7 @@
             </ImageView>
          </children>
       </HBox>
+      <Pane id="musicPaneChild" fx:id="musicPane" layoutX="619.0" layoutY="40.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 18px;" visible="false" />
+      <Button fx:id="openMusicPaneButton" layoutX="769.0" layoutY="14.0" mnemonicParsing="false" onAction="#openMusicPaneButtonOnAction" prefHeight="16.0" prefWidth="100.0" stylesheets="@css/style.css" text="Music" />
    </children>
 </AnchorPane>
