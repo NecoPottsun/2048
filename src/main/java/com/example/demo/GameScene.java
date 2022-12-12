@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,6 +18,8 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.apache.poi.util.SystemOutLogger;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -23,30 +28,26 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 class GameScene {
-    private static int WIDTH = 900;
-    private static int HEIGHT = 700;
+    private static int WIDTH = Main.WIDTH;
+    private static int HEIGHT = Main.HEIGHT;
     private static int n = 5;
     private final static int distanceBetweenCells = 10;
     private static double LENGTH;
- //   private static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     private TextMaker textMaker = TextMaker.getSingleInstance();
     private static Cell[][] cells;
     private Group root;
     private long score = 0;
     private long mergedCellScore = 0;
-
-    private Timer timer;
-    private TimerTask task;
+    private Timeline timeline;
     private Text timeText;
-    private int second, minute;
-    private String ddSecond, ddMinute;
+    private int second, minute, hardSecond, hardMinute;
+    private String ddSecond, ddMinute, ddHardSecond, ddHardMinute;
     private String playTime;
     private DecimalFormat dFormat = new DecimalFormat("00");
     private Stage primaryStage;
     private Scene endGameScene;
     private EndGameController endGameController;
-
-
+    private Pane musicPane;
     private Account account;
 
 
@@ -88,9 +89,6 @@ class GameScene {
                 }
             }
         }
-
-
-
         Text text;
         Random random = new Random();
         boolean putTwo = true;
@@ -181,6 +179,28 @@ class GameScene {
         }
         return coordinate;
     }
+    private void moveUp() {
+        for (int j = 0; j < n; j++) {
+            for (int i = 1; i < n; i++) {
+                moveVertically(i, j, passDestination(i, j, 'u'), -1);
+            }
+            for (int i = 0; i < n; i++) {
+                cells[i][j].setModify(false);
+            }
+        }
+
+    }
+    private void moveDown() {
+        for (int j = 0; j < n; j++) {
+            for (int i = n - 1; i >= 0; i--) {
+                moveVertically(i, j, passDestination(i, j, 'd'), 1);
+            }
+            for (int i = 0; i < n; i++) {
+                cells[i][j].setModify(false);
+            }
+        }
+
+    }
     private void moveLeft() {
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < n; j++) {
@@ -203,31 +223,6 @@ class GameScene {
         }
     }
 
-    private void moveUp() {
-        for (int j = 0; j < n; j++) {
-            for (int i = 1; i < n; i++) {
-                moveVertically(i, j, passDestination(i, j, 'u'), -1);
-            }
-            for (int i = 0; i < n; i++) {
-                cells[i][j].setModify(false);
-            }
-        }
-
-    }
-
-    private void moveDown() {
-        for (int j = 0; j < n; j++) {
-            for (int i = n - 1; i >= 0; i--) {
-                moveVertically(i, j, passDestination(i, j, 'd'), 1);
-            }
-            for (int i = 0; i < n; i++) {
-                cells[i][j].setModify(false);
-            }
-        }
-
-    }
-
-
     private void moveHorizontally(int i, int j, int des, int sign) {
         if (isMergedHorizontally(i, j, des, sign)) {
             cells[i][j].adder(cells[i][des + sign]);
@@ -237,12 +232,21 @@ class GameScene {
             cells[i][j].changeCell(cells[i][des]);
         }
     }
-
+    private void moveVertically(int i, int j, int des, int sign) {
+        if (isMergedVertically(i, j, des, sign)) {
+            cells[i][j].adder(cells[des + sign][j]);
+            cells[des][j].setModify(true);
+    //        System.out.println("Move horizontally");
+            //          System.out.printf("[%d,%d] merged = %d\n", des + sign, j, cells[des + sign][j].getNumber()+ cells[i][j].getNumber());
+        } else if (des != i) {
+            cells[i][j].changeCell(cells[des][j]);
+        }
+    }
     private boolean isMergedHorizontally(int i, int j, int des, int sign) {
         if (des + sign < n && des + sign >= 0) {
             if (cells[i][des + sign].getNumber() == cells[i][j].getNumber() && !cells[i][des + sign].getModify()
                     && cells[i][des + sign].getNumber() != 0) {
-                System.out.printf("[%d,%d] merged = %d\n", i, des + sign, cells[i][des + sign].getNumber() + cells[i][des + sign].getNumber());
+  //              System.out.printf("[%d,%d] merged = %d\n", i, des + sign, cells[i][des + sign].getNumber() + cells[i][des + sign].getNumber());
                 mergedCellScore += cells[i][des + sign].getNumber() + cells[i][des + sign].getNumber();
 //                System.out.println("Score: " + mergedCellScore);
                 return true;
@@ -255,11 +259,11 @@ class GameScene {
 //                                                         && cells[i][des + sign].getNumber() != 0) ? true : false : false;
     }
     private boolean isMergedVertically(int i, int j, int des, int sign) {
-        System.out.printf("i = %d, j = %d, des = %d, sign = %d\n", i,j,des,sign);
+     //   System.out.printf("i = %d, j = %d, des = %d, sign = %d\n", i,j,des,sign);
         if (des + sign < n && des + sign >= 0)
             if (cells[des + sign][j].getNumber() == cells[i][j].getNumber() && !cells[des + sign][j].getModify()
                     && cells[des + sign][j].getNumber() != 0) {
-                System.out.printf("[%d,%d] merged = %d\n", des + sign, j, cells[des + sign][j].getNumber()+ cells[i][j].getNumber());
+    //            System.out.printf("[%d,%d] merged = %d\n", des + sign, j, cells[des + sign][j].getNumber()+ cells[i][j].getNumber());
                 mergedCellScore += cells[des + sign][j].getNumber()+ cells[i][j].getNumber();
                 //       System.out.println("Score: " + mergedCellScore);
                 return true;
@@ -267,23 +271,11 @@ class GameScene {
 
         return false;
     }
-    private void moveVertically(int i, int j, int des, int sign) {
-        if (isMergedVertically(i, j, des, sign)) {
-            cells[i][j].adder(cells[des + sign][j]);
-            cells[des][j].setModify(true);
-            System.out.println("Move horizontally");
-  //          System.out.printf("[%d,%d] merged = %d\n", des + sign, j, cells[des + sign][j].getNumber()+ cells[i][j].getNumber());
-        } else if (des != i) {
-            cells[i][j].changeCell(cells[des][j]);
-        }
-    }
 
     private boolean haveSameNumberNearly(int i, int j) {
         if (i < n - 1 && j < n - 1) {
-
             if (cells[i + 1][j].getNumber() == cells[i][j].getNumber())
                 return true;
-
             if (cells[i][j + 1].getNumber() == cells[i][j].getNumber())
                 return true;
         }
@@ -320,6 +312,9 @@ class GameScene {
         this.primaryStage = primaryStage;
         this.endGameScene = endGameScene;
         this.endGameController = endGameController;
+
+        System.out.println(endGameScene);
+
         // create cells
         createCells();
 
@@ -327,12 +322,7 @@ class GameScene {
         gameScene.getStylesheets().add(String.valueOf(getClass().getResource("css/style.css")));
 
         // musicPane
-        Pane musicPane = new Pane();
-        musicPane.setStyle("-fx-background-color: #ffffff");
-        musicPane.setPrefSize(250,70);
-        musicPane.relocate(650, 40);
-        musicPane.setVisible(false);
-        root.getChildren().add(musicPane);
+        createMusicPane();
 
         // Open music button
         Button openMusicPaneButton = new Button();
@@ -368,8 +358,17 @@ class GameScene {
 
 
         // Time
-        second = 0;
-        simpleTimer();
+
+        if(n == 4){
+            System.out.println("hard");
+            second = 90;
+            simpleTimer(1);
+        }
+        else if (n == 5){
+            System.out.println("easy");
+            second = 0;
+            simpleTimer(0);
+        }
 
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key ->{
             Platform.runLater(() -> {
@@ -386,27 +385,33 @@ class GameScene {
             });
         });
     }
-    public void simpleTimer(){
-        timer = new Timer();
-        task = new TimerTask() {
-            @Override
-            public void run() {
-                second++;
-                ddSecond = dFormat.format(second);
-                ddMinute = dFormat.format(minute);
-                timeText.setText(ddMinute + ":" + ddSecond);
-                if(second == 60){
-                    second = 0;
-                    minute++;
-                    timeText.setText(ddMinute + ":" + ddSecond);
 
-                }
+    private void createMusicPane() {
+        musicPane = new Pane();
+        musicPane.setStyle("-fx-background-color: #ffffff");
+        musicPane.setPrefSize(250,70);
+        musicPane.relocate(650, 40);
+        musicPane.setVisible(false);
+        root.getChildren().add(musicPane);
+    }
 
+    private Text createText(Group root, int x, int y,String textString,int size){
+        Text text = new Text();
+        root.getChildren().add(text);
+        text.setText(textString);
+        text.setFont(Font.font(size));
+        text.setFill(Paint.valueOf("#ddead1"));
+        text.relocate(x, y);
+        return text;
+    }
+    private void createCells(){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                cells[i][j] = new Cell((j) * LENGTH + (j + 1) * distanceBetweenCells + 60,
+                        (i) * LENGTH + (i + 1) * distanceBetweenCells, LENGTH, root);
             }
-        };
-        timer.scheduleAtFixedRate(task,0,1000);
 
-
+        }
     }
     private Boolean keyPressHandler(KeyEvent key) {
 
@@ -425,47 +430,86 @@ class GameScene {
             return  true;
         }
         return false;
-        // GameScene.this.sumCellNumbersToScore();
-//                scoreText1.setText(score + "");
-
-
     }
-
-    private void createCells(){
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                cells[i][j] = new Cell((j) * LENGTH + (j + 1) * distanceBetweenCells + 60,
-                        (i) * LENGTH + (i + 1) * distanceBetweenCells, LENGTH, root);
+    public void simpleTimer(int mode){
+        minute = secondToMinute(second);
+        second = second - minute*60;
+        ddSecond = dFormat.format(second);
+        ddMinute = dFormat.format(minute);
+        timeText.setText(ddMinute + ":" + ddSecond);
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            if(mode == 0){
+                second++;
+                ddSecond = dFormat.format(second);
+                ddMinute = dFormat.format(minute);
+                timeText.setText(ddMinute + ":" + ddSecond);
+                if(second == 60){
+                    second = 0;
+                    minute++;
+                    timeText.setText(ddMinute + ":" + ddSecond);
+                }
+                playTime = ddMinute + ":" + ddSecond;
             }
+            if(mode == 1){
+                hardSecond++;
+                ddHardSecond = dFormat.format(hardSecond);
+                ddHardMinute = dFormat.format(hardMinute);
+                ddSecond = dFormat.format(second);
+                ddMinute = dFormat.format(minute);
+                timeText.setText(ddMinute + ":" + ddSecond);
+                if(hardSecond == 60){
+                    hardSecond = 0;
+                    hardMinute++;
+                }
+                if(minute > 0){
+                    if(second > 0){
+                        second--;
+                    }
+                    if(second == 0){
+                        minute--;
+                        second = 59;
+                    }
+                }
+                else if(minute == 0){
+                    second--;
+                    if(second == 0){
+                        playTime = ddHardMinute + ":" + ddHardSecond;
+                        endGame();
+                    }
+                }
+                playTime = ddHardMinute + ":" + ddHardSecond;
+            }
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
 
-        }
     }
-    private Text createText(Group root, int x, int y,String textString,int size){
-        Text text = new Text();
-        root.getChildren().add(text);
-        text.setText(textString);
-        text.setFont(Font.font(size));
-        text.setFill(Paint.valueOf("#ddead1"));
-        text.relocate(x, y);
-        return text;
+    public int secondToMinute(int second){
+        return (second%3600)/60;
     }
 
     private void isMoveHandler(int haveEmptyCell) {
         if (haveEmptyCell == -1) {
             if (GameScene.this.canNotMove()) {
-                primaryStage.setScene(endGameScene);
-                // set Account score
-                account.setScore(mergedCellScore);
-                timer.cancel();
-                playTime = ddMinute + ":"  + ddSecond;
-                account.setPlayTime(playTime);
-                EndGame.getInstance().endGameShow(endGameScene, endGameController, primaryStage, account);
-                root.getChildren().clear();
-                score = 0;
-                mergedCellScore = 0;
+//                timer.cancel();
+                endGame();
             }
         } else if(haveEmptyCell == 1)
             GameScene.this.randomFillNumber(2);
+    }
+
+    private void endGame() {
+        System.out.println("End game called");
+        System.out.println("Play time = " + playTime);
+        timeline.stop();
+        account.setScore(mergedCellScore);
+        account.setPlayTime(playTime);
+        EndGame.getInstance().endGameShow(this.endGameScene, endGameController, primaryStage, account);
+        primaryStage.setScene(this.endGameScene);
+
+        root.getChildren().clear();
+        score = 0;
+        mergedCellScore = 0;
     }
 
     private void goBackOnAction(Button goBackButton,Stage primaryStage) {

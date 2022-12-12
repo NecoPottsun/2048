@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -10,6 +12,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 //import org.apache.poi.ss.usermodel.Row;
 //import org.apache.poi.xssf.usermodel.XSSFSheet;
 //import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -36,12 +39,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Main.class.getResource("LoadingScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
-//        MenuController menuController = fxmlLoader.getController();
-//        menuController.init();
         primaryStage.setTitle("2048");
         primaryStage.getIcons().add(new Image(
                 "https://icons.iconarchive.com/icons/alecive/flatwoken/512/Apps-2048-icon.png"));
@@ -49,11 +49,16 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
 
+        // To end all the time counts in the system
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                System.exit(0);
+            }
+        });
+
 
     }
-
-
-
 
     public static void main(String[] args) {
         launch(args);

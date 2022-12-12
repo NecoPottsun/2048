@@ -30,8 +30,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class EndGameController implements Initializable {
-    private static int WIDTH = 900;
-    private static int HEIGHT = 700;
+    private static int WIDTH = Main.WIDTH;
+    private static int HEIGHT = Main.HEIGHT;
     private Stage primaryStage;
     private Account account;
     @FXML
@@ -163,6 +163,7 @@ public class EndGameController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             primaryStage.close();
+            System.exit(0);
         }
 
     }

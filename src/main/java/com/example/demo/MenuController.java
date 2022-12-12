@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +29,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MenuController implements Initializable {
 
@@ -40,7 +45,7 @@ public class MenuController implements Initializable {
 
     private GameScene game;
 
-    private String colorPicked = "#658354";
+    private String colorPicked = "#3F3B6C";
 
 
     static final int WIDTH = 900;
@@ -62,20 +67,52 @@ public class MenuController implements Initializable {
     @FXML
     private MusicPaneController musicPaneController;
 
+
+    private int i = 0;
+    @FXML
+    private Text testText;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         colorPicker.setValue(Color.valueOf(colorPicked));
         backgroundColorRectangle.setFill(Paint.valueOf(colorPicked));
-
-
+//
+//        timeLineTest();
+//
 
 
     }
+//    private void timeLineTest(){
+//        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+//            i++;
+//            testText.setText(String.valueOf(i));
+//            if(i == 10){
+//
+//                FXMLLoader fxmlLoader = new FXMLLoader();
+//                fxmlLoader.setLocation(Main.class.getResource("RankScene.fxml"));
+//
+//                Scene scene = null;
+//                try {
+//                    scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
+//                    primaryStage.setScene(scene);
+//                    primaryStage.setResizable(false);
+//                    primaryStage.show();
+//                } catch (IOException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+//
+//            }
+//        }));
+//        timeline.setCycleCount(Animation.INDEFINITE);
+//        timeline.play();
+//    }
     public void init(){
    //     String path = "music/soundtrack1.mp3";
     //    MusicPaneController.playSoundtrack(SoundtrackDatabase.getInstance().getSoundtrackAtPosition(1));
 //        MusicPaneController.playSoundtrack(SoundtrackDatabase.getInstance().getSoundtrackAtPosition(0));
     }
+
+
     public static void loadMusicPane (Pane pane)  {
         FXMLLoader fxmlLoader = new FXMLLoader();
         Pane newLoadedPane = null;
@@ -83,6 +120,7 @@ public class MenuController implements Initializable {
             System.out.println("Loaded Music Pane");
             newLoadedPane = fxmlLoader.load(MenuController.class.getResource("MusicPane.fxml"));
             pane.getChildren().add(newLoadedPane);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -161,6 +199,7 @@ public class MenuController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             primaryStage.close();
+            System.exit(0);
         }
     }
 

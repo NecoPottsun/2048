@@ -27,33 +27,37 @@ the Javadoc documentation is located in:
   (**Note**: If the key arrows are not working properly, try pressing `ctrl + key arrow`, for example: `ctrl + key down`)
 - Time counter of each game.
 - Score board of the game: show the high score players achieving from an excel file.
-- 2 modes of game: `easy mode`: 5x5 board , `hard mode`: 4x4 board.
+- 2 modes of game: `easy mode`: 5x5 board , `hard mode`: 4x4 board, and the play time limit is 1 minute.
 - If the player has the highest score, he/she will be announced when end the game.
-
+- The player now can listen to the soundtracks when play the game.
+- The player can change, pause the soundtrack, can see the progress of soundtrack and adjust volumn at any Scene.
 ## List of features that are implemented and are not working properly
 
 - The data can be written and read correctly in the Excel file using `poi` library (tested). However, when I open the excel file, the data is not saved even there is an overwrite excel file method to handle it. But when achieve data again, the data is the same as overwritten data.
 
 ## List of features that not yet implemented
 
-- The game time: in the `hard mode`, each move is limited by time (about 30s). If the player doesn't move, it will be moved randomly. 
-(This feature haven't implemented yet due to the time limitation)
-- Soundtrack: I want to add this feature to the game, to make the player more interested while playing but I don't have time to do it.
+- Change background of the game, I have not done this due to the time limit.
 
 ## List of new Java classes
 
 - LoadingController.java
-- MenuController.java
 - MenuController.java
 - EndGameController.java
 - RankSceneController.java
 - Interface Dao<T>.java
 - AccountDao.java
 - AccountDaoTest.java 
- 
+- MusicPaneController.java
+
 ## List of modified Java classes 
 
 - Main.java
-- GameScene.java 
 - Account.java
 - EndGame.java
+- GameScene.java
+
+In the GameScene, add `createMusicPane()`, `simplerTimer()`.
+Instead of calculating the score based on the sum cells number, 
+now when the cells are merged the score will be calculated which is the `mergedCellScore` variable modified in 
+`isMergedHorizontalle()` and `isMergedVertically()`

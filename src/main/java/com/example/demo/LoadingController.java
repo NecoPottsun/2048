@@ -85,6 +85,7 @@ public class LoadingController implements Initializable{
         Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
         MenuController menuController = fxmlLoader.getController();
         MusicPaneController.playSoundtrack(SoundtrackDatabase.getInstance().getSoundtrackAtPosition(0));
+   //     MenuController.beginTimer();
         menuController.init();
         this.primaryStage.setScene(scene);
 

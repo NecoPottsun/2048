@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -8,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.Pane;
@@ -33,33 +37,25 @@ public class MusicPaneController implements Initializable {
 
     private static double volumn = 50;
 
-    private static String path;
     private static String songName = "";
 
     private static MediaPlayer mediaPlayer;
 
     private Boolean running = false;
-    private Timer timer;
-    private TimerTask task;
-
+    private Timeline timeline;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Running = " + running);
-        if(running == true){
-            System.out.println("no null nha");
-            timer.cancel();
-        }
-        else if(!running){
-            System.out.println("begin ne");
-            beginTimer();
-        }
+        running = true;
+        setSoundtrackProgressBarTimer();
+
         songNameLabel.setText(songName);
         volumnSlider.setValue(volumn);
+
+
         volumnSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 volumn = (int)volumnSlider.getValue();
-                System.out.println(volumn);
                 changeVolumn(volumn);
             }
         });
@@ -72,6 +68,22 @@ public class MusicPaneController implements Initializable {
 
     public static void setSongName(String songName) {
         MusicPaneController.songName = songName;
+    }
+
+    public Boolean getRunning() {
+        return running;
+    }
+
+    public void setRunning(Boolean running) {
+        this.running = running;
+    }
+
+    public static MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
+
+    public static void setMediaPlayer(MediaPlayer mediaPlayer) {
+        MusicPaneController.mediaPlayer = mediaPlayer;
     }
 
     @FXML
@@ -91,13 +103,13 @@ public class MusicPaneController implements Initializable {
         System.out.println("next song clicked");
         String nextSoundtrack = SoundtrackDatabase.getInstance().nextSoundtrack();
         songNameLabel.setText(getTitleSong(nextSoundtrack));
-        System.out.println(nextSoundtrack);
-        if(timer != null){
-            timer.cancel();
+        if(timeline != null){
+            timeline.stop();
         }
         mediaPlayer.stop();
         playSoundtrack(nextSoundtrack);
-        beginTimer();
+        setSoundtrackProgressBarTimer();
+
     }
 
     @FXML
@@ -106,12 +118,13 @@ public class MusicPaneController implements Initializable {
         String previousSoundtrack = SoundtrackDatabase.getInstance().previousSoundtrack();
         songNameLabel.setText(getTitleSong(previousSoundtrack));
         System.out.println(previousSoundtrack);
-        if(timer != null){
-            timer.cancel();
+        if(timeline != null){
+            timeline.stop();
         }
         mediaPlayer.stop();
         playSoundtrack(previousSoundtrack);
-        beginTimer();
+        setSoundtrackProgressBarTimer();
+
 
     }
 
@@ -120,34 +133,28 @@ public class MusicPaneController implements Initializable {
         mediaPlayer.setVolume(volumn/100);
     }
 
-    public void beginTimer(){
-        timer = new Timer();
-        task = new TimerTask(){
-
-            @Override
-            public void run() {
-                running = true;
-                double current = mediaPlayer.getCurrentTime().toSeconds();
-                double end = mediaPlayer.getTotalDuration().toSeconds();
-                System.out.println(current/end);
-                soundtrackProgressBar.setProgress(current/end);
-                if(current/end == 1){
-
-                }
-
+    public void setSoundtrackProgressBarTimer(){
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1),e ->{
+            double current = MusicPaneController.getMediaPlayer().getCurrentTime().toSeconds();
+            double end = MusicPaneController.getMediaPlayer().getTotalDuration().toSeconds();
+            double playingTime = current/end;
+            soundtrackProgressBar.setProgress(playingTime);
+            if(!running){
+                timeline.pause();
             }
-        };
-        timer.scheduleAtFixedRate(task,1000,1000);
+        }));
+
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
+
     public static void playSoundtrack(String path){
         URL soundTrackFile1 = Main.class.getResource(path);
         System.out.println(soundTrackFile1);
         Media media = new Media(soundTrackFile1.toString());
-
         //get title name
         songName = getTitleSong(path);
         setSongName(songName);
-
         System.out.println(songName);
 
   //      songNameLabel.setText(media.getSource());

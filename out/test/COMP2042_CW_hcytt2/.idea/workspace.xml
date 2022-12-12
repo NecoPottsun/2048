@@ -5,44 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14861539-f543-4a4a-bcd8-63f0b6176609" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/COMP2042_CW_hcytt2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/COMP2042_CW_hcytt2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/GameScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/LoadingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/LoadingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/MenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/MusicPaneController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/MusicPaneController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/MusicPaneController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/MusicPaneController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/MusicPaneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/MusicPaneController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/RankSceneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/RankSceneController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/data/account.xls" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COMP2042_CW_hcytt2/com/example/demo/data/account.xls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Account.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/AccountDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/AccountDaoTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Cell.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Dao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/EndGame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/EndGameController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/GameScene.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/LoadingController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/MenuController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/RankSceneController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/TextMaker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sample.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/EndGameScene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/data/account.xls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/image/2048_Icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/image/591d04d20f4a73b5494ac1172a63f68a74c0eaf4r1-1000-1000_hq.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/image/gold-medal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/image/icons8-santa-64.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/image/kieran-white-SBdmQcW8qag-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/image/party-popper.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/image/silver-medal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/image/sleigh.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/image/sparkles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/image/tumblr_o52aqu3BLG1ttph68o1_500.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/image/winner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/EndGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/EndGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/EndGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/EndGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/LoadingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/LoadingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/MusicPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MusicPaneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/RankSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/RankSceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/EndGameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/EndGameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/MenuScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/MenuScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/MusicPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/MusicPane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/data/account.xls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/data/account.xls" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,10 +75,10 @@
       <list>
         <option value="Tag Library Descriptor" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
         <option value="JUnit4 Test Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -119,7 +108,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "jdk.selected.JAVA_MODULE": "18 (2)",
-    "last_opened_file_path": "D:/Documents/VS code/Java/Software Maintanance/COMP2042_CW_hcytt2/demo/src/main/resources/com/example/demo/library/xmlbeans-2.6.0.jar",
+    "last_opened_file_path": "D:/Documents/VS code/Java/Software Maintanance/COMP2042_CW_hcytt2/src/main/resources/com/example/demo/image",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -132,11 +121,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\image" />
+      <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\music" />
+      <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\mp3" />
       <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\demo\src\main\resources\com\example\demo" />
       <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\demo\src\main\java\com\example\demo" />
-      <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\image" />
-      <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\library" />
-      <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Documents\VS code\Java\Software Maintanance\COMP2042_CW_hcytt2\src\main\resources\com\example\demo\image" />
@@ -151,11 +140,12 @@
       <recent name="com.example.demo" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="18 (2)" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.example.demo.Main" />
+      <module name="COMP2042_CW_hcytt2" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.example.demo.*" />
@@ -229,6 +219,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="src.test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="src.test" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -262,6 +265,11 @@
       <workItem from="1670214873166" duration="2546000" />
       <workItem from="1670226838740" duration="14122000" />
       <workItem from="1670244081251" duration="12187000" />
+      <workItem from="1670319279710" duration="2360000" />
+      <workItem from="1670491132461" duration="33235000" />
+      <workItem from="1670574870645" duration="830000" />
+      <workItem from="1670609781384" duration="4788000" />
+      <workItem from="1670754850711" duration="11324000" />
     </task>
     <servers />
   </component>
