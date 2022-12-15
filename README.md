@@ -14,6 +14,11 @@ git clone https://github.com/NecoPottsun/COMP2042_CW_hcytt2.git
 ```
 Or if you are using GitHub Desktop, simply do: `File->Clone Repository->URL` and paste the link `https://github.com/NecoPottsun/COMP2042_CW_hcytt2.git` in the `URL or username/reposity` box
 
+Run the file `COMP2042_CW_hcytt2.jar` in folder:
+```
+COMP2042_CW_hcytt2\out\artifacts\COMP2042_CW_hcytt2_jar
+```
+
 ## Javadoc documentation path
 
 the Javadoc documentation is located in: 
