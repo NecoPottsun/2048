@@ -14,11 +14,6 @@ git clone https://github.com/NecoPottsun/COMP2042_CW_hcytt2.git
 ```
 Or if you are using GitHub Desktop, simply do: `File->Clone Repository->URL` and paste the link `https://github.com/NecoPottsun/COMP2042_CW_hcytt2.git` in the `URL or username/reposity` box
 
-Run the file `COMP2042_CW_hcytt2.jar` in folder:
-```
-COMP2042_CW_hcytt2\out\artifacts\COMP2042_CW_hcytt2_jar
-```
-
 ## Javadoc documentation path
 
 the Javadoc documentation is located in: 
@@ -43,6 +38,7 @@ COMP2042TrangThanhMaiDuyen\javadoc
 ## List of features that are implemented and are not working properly
 
 - The data can be written and read correctly in the Excel file using `poi` library (tested). However, when I open the Excel file, the data is not saved even there is an overwrite Excel file method to handle it. But when achieve data again, the data is the same as overwritten data.
+  - I have build the project jar file but cannot run it smoothly, it only loads the `LoadingScene` and `MenuScene`
 
 ## List of features that not yet implemented
 
