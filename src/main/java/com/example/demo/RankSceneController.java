@@ -18,11 +18,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
+/**
+ * To control the RankScene, handle the interactions between the user
+ * with the system in the Rank scene of the game
+ * @author Thanh Mai Duyen Trang
+ */
 public class RankSceneController implements Initializable {
-    private static int WIDTH = Main.WIDTH;
-    private static int HEIGHT = Main.HEIGHT;
-
     private Stage primaryStage;
    @FXML
    private TableView<Account> scoreTable;
@@ -38,6 +39,12 @@ public class RankSceneController implements Initializable {
     private Pane musicPane;
 
    private ObservableList<Account> accountObservableList = FXCollections.observableArrayList();
+    /**
+     * Create all the initial values, do the very first stuffs
+     * when RankScene is created
+     * @param url the URL
+     * @param resourceBundle the resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         MenuController.loadMusicPane(musicPane);
@@ -52,6 +59,10 @@ public class RankSceneController implements Initializable {
         }
         scoreTable.setItems(accountObservableList);
     }
+    /**
+     * Opens the music pane inside the RankScene
+     * @param event the event listened when the Music button is clicked
+     */
     @FXML
     protected  void openMusicPaneButtonOnAction(ActionEvent event){
         if(musicPane.isVisible()){
@@ -62,7 +73,10 @@ public class RankSceneController implements Initializable {
         }
     }
 
-
+    /**
+     * Opens the Menu Scene when clicking the Back button in the RankScene
+     * @param event the event listened when the Back button is clicked
+     */
     @FXML
     protected void backButtonOnAction(ActionEvent event){
         this.primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -76,7 +90,7 @@ public class RankSceneController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(Main.class.getResource("MenuScene.fxml"));
             try {
-                Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
+                Scene scene = new Scene(fxmlLoader.load(),Main.WIDTH , Main.HEIGHT);
                 MenuController menuController = fxmlLoader.getController();
                 primaryStage.setScene(scene);
                 primaryStage.setResizable(false);
@@ -86,6 +100,10 @@ public class RankSceneController implements Initializable {
             }
         }
     }
+    /**
+     * Terminates the game system
+     * @param event the event listened when the Quit button is clicked
+     */
     @FXML
     protected void quitButtonOnAction(ActionEvent event){
         this.primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();

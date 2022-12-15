@@ -29,30 +29,22 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * To control the EndGameScene, handle the interactions between the user
+ * with the system in the End game scene
+ * @author Thanh Mai Duyen Trang
+ */
 public class EndGameController implements Initializable {
-    private static int WIDTH = Main.WIDTH;
-    private static int HEIGHT = Main.HEIGHT;
     private Stage primaryStage;
     private Account account;
     @FXML
     private HBox congratulationHBox;
 
     @FXML
-    private AnchorPane mainAnchorPane;
-    @FXML
     private Text scoreText;
 
     @FXML
     private Text timePlayText;
-
-    @FXML
-    private Button backButton;
-
-    @FXML
-    private Button quitButton;
-
-    @FXML
-    private ImageView santaIconImage;
 
     @FXML
     private ImageView blueJuminoIcon;
@@ -63,22 +55,23 @@ public class EndGameController implements Initializable {
     @FXML
     private Pane musicPane;
 
+    /**
+     * Create all the initial values, do the very first stuffs
+     * when EndGameScene is created
+     * @param url the URL
+     * @param resourceBundle the resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        TranslateTransition translate = new TranslateTransition();
-//        translate.setNode(santaIconImage);
-//        translate.setDuration(Duration.millis(5000));
-//        translate.setCycleCount(TranslateTransition.INDEFINITE);
-//        translate.setByX(WIDTH-200);
-//        translate.setAutoReverse(true);
-//        translate.play();
         MenuController.loadMusicPane(musicPane);
+
+        congratulationHBox.setVisible(false);
 
         TranslateTransition translate1 = new TranslateTransition();
         translate1.setNode(blueJuminoIcon);
         translate1.setDuration(Duration.millis(5000));
         translate1.setCycleCount(TranslateTransition.INDEFINITE);
-        translate1.setByX(WIDTH-blueJuminoIcon.getFitWidth());
+        translate1.setByX(680);
         translate1.setAutoReverse(true);
         translate1.play();
 
@@ -86,14 +79,17 @@ public class EndGameController implements Initializable {
         translate2.setNode(purpleJuminoIcon);
         translate2.setDuration(Duration.millis(5000));
         translate2.setCycleCount(TranslateTransition.INDEFINITE);
-        translate2.setByX(WIDTH-purpleJuminoIcon.getFitWidth()-5);
+        translate2.setByX(680-5);
         translate2.setAutoReverse(true);
         translate2.play();
 
 
     }
 
-
+    /**
+     * Passed data from another class to this EndGameController
+     * @param account the account data that wanted to pass
+     */
     void initData(Account account){
   //      mainAnchorPane.setStyle("-fx-background-color:  " + pickedColor);
         System.out.println(account.getId());
@@ -107,8 +103,28 @@ public class EndGameController implements Initializable {
         checkFirstRank();
     }
 
+    /**
+     * Gets the primary stage of this EndGameController
+     * @return the primary stage of this EndGameController
+     */
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    /**
+     * Gets the account of this EndGameController
+     * @return account of this EndGameController
+     */
+    public Account getAccount() {
+        return account;
+    }
+
+    /**
+     * Opens the music pane inside the EndGameScene
+     * @param event the event listened when the Music button is clicked
+     */
     @FXML
-    protected  void openMusicPaneButtonOnAction(ActionEvent event){
+    protected void openMusicPaneButtonOnAction(ActionEvent event){
         if(musicPane.isVisible()){
             musicPane.setVisible(false);
         }
@@ -117,18 +133,28 @@ public class EndGameController implements Initializable {
         }
     }
 
+    /**
+     * Opens the new Rank Scene when clicking the Score Board button inside
+     * the EndGameScene
+     * @param event the event listened when the Score Board button is clicked
+     * @throws IOException if any errors
+     */
     @FXML
     protected void scoreBoardButtonOnAction(ActionEvent event) throws IOException {
         this.primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Main.class.getResource("RankScene.fxml"));
         RankSceneController rankSceneController = fxmlLoader.getController();
-        Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
+        Scene scene = new Scene(fxmlLoader.load(),Main.WIDTH , Main.HEIGHT);
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
 
+    /**
+     * Opens the Menu Scene when clicking the Back button in the EndGameScene
+     * @param event the event listened when the Back button is clicked
+     */
     @FXML
     protected void backButtonOnAction(ActionEvent event){
         this.primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -142,7 +168,7 @@ public class EndGameController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(Main.class.getResource("MenuScene.fxml"));
             try {
-                Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
+                Scene scene = new Scene(fxmlLoader.load(),Main.WIDTH , Main.HEIGHT);
                 MenuController menuController = fxmlLoader.getController();
                 primaryStage.setScene(scene);
                 primaryStage.setResizable(false);
@@ -152,6 +178,11 @@ public class EndGameController implements Initializable {
             }
         }
     }
+
+    /**
+     * Terminates the game system
+     * @param event the event listened when the Quit button is clicked
+     */
     @FXML
     protected void quitButtonOnAction(ActionEvent event){
         this.primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -168,6 +199,14 @@ public class EndGameController implements Initializable {
 
     }
 
+    /**
+     * Checks if the account of this EndGameController has the
+     * highest score compare to the accounts stored inside the
+     * Excel file
+     * <p>
+     *     If <code>true</code>, display the congratulationHBox
+     * </p>
+     */
     private void checkFirstRank() {
         List<Account> accounts = AccountDao.getInstance().GetSortList();
         if (account.getId() == accounts.get(0).getId() && account.getUsername().equals(accounts.get(0).getUsername()) && account.getScore() == accounts.get(0).getScore() &&

@@ -19,16 +19,13 @@ public class Cell {
     private boolean modify = false;
 
     /**
-     * This is the constructor of a Cell, whenever create the new Cell in the root
-     * it will create a new rectangle with position (x,y) , width & height = to the scale,
-     * default color gray,
-     * and the text inside the cell initially set to 0
-     * @param x
-     * @param y
-     * @param scale
-     * @param root
+     * This is the constructor of Cell
+     * @param x the position of this Cell in x-axis
+     * @param y the position of this Cell in y-axis
+     * @param scale the width and height of this Cell
+     * @param root the root of this Cell
      */
-    Cell(double x, double y, double scale, Group root) {
+    public Cell(double x, double y, double scale, Group root) {
         rectangle = new Rectangle();
         rectangle.setX(x);
         rectangle.setY(y);
@@ -40,35 +37,73 @@ public class Cell {
         root.getChildren().add(rectangle);
     }
 
-    double getX() {
+    /**
+     * Gets the position of this Cell in x-axis of this Cell
+     * @return x
+     */
+    public double getX() {
         return rectangle.getX();
     }
-
-    double getY() {
+    /**
+     * Gets the position of this Cell in y-axis of this Cell
+     * @return y
+     */
+    public double getY() {
         return rectangle.getY();
     }
 
-    int getNumber() {
+    /**
+     * Gets the number inside this Cell Text
+     * @return number inside this Cell Text
+     * <p>
+     *     Default value: 0
+     * </p>
+     */
+    public int getNumber() {
         return Integer.parseInt(textClass.getText());
     }
-    private Text getTextClass() {
+
+    /**
+     * Gets the Text inside this Cell
+     * @return Text of this Cell
+     */
+    public Text getTextClass() {
         return textClass;
     }
-    void setTextClass(Text textClass) {
-        this.textClass = textClass;
-    }
-    void setModify(boolean modify) {
-        this.modify = modify;
-    }
 
-    boolean getModify() {
+    /**
+     * Gets modify value of this Cell
+     * @return <code>True</code> if this cell needs modify;
+     *         <code>False</code> if this cell no need to modify
+     * <p>
+     *     Default value: False
+     * </p>
+     */
+    public boolean getModify() {
         return modify;
     }
 
     /**
-     * This method is to change the value and the color inside the cell whenever the
+     * Sets the textClass of this Cell
+     * @param textClass the Text object inside this Cell
+     */
+    public void setTextClass(Text textClass) {
+        this.textClass = textClass;
+    }
+
+    /**
+     * Sets modify of this Cell
+     * @param modify the modify value that wanted to change
+     */
+    public void setModify(boolean modify) {
+        this.modify = modify;
+    }
+
+
+    /**
+     * Changes the value and the color inside the cell whenever the
      * cell in the GameScene is created or merged
-     * @param cell
+     * @param cell the Cell wanted to be changed
      */
     void changeCell(Cell cell) {
         TextMaker.changeTwoText(textClass, cell.getTextClass());
@@ -86,13 +121,13 @@ public class Cell {
     }
 
     /**
-     * adder() method is handle the merged cells
+     * Handles the merged cells
      *. Whenever the cell is merged with another cell
      * which have the same value, then 2 cells' value sum up,
      * and set the color of the cell by the new value.
-     * @param cell
+     * @param cell the Cell wanted to merge with this Cell
      */
-    void adder(Cell cell) {
+    public void adder(Cell cell) {
         cell.getTextClass().setText((cell.getNumber() + this.getNumber()) + "");
         textClass.setText("0");
         root.getChildren().remove(textClass);
@@ -103,7 +138,7 @@ public class Cell {
     /**
      * This method is set the color to the cell base on the
      * value of the cell in the GameScene
-     * @param number
+     * @param number the number value of this Cell
      */
     void setColorByNumber(int number) {
         switch (number) {

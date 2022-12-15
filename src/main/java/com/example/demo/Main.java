@@ -21,26 +21,25 @@ import java.io.File;
 import java.net.URL;
 import java.util.Scanner;
 
+/**
+ * This is the Main class for initialize the game application
+ * @author Thanh Mai Duyen Trang-modified
+ */
 public class Main extends Application {
     static final int WIDTH = 900;
     static final int HEIGHT = 700;
-    private Group gameRoot = new Group();
-    private Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
-    private static Scanner input= new Scanner(System.in);
 
-    public void setGameScene(Scene gameScene) {
-        this.gameScene = gameScene;
-    }
-
-    public void setGameRoot(Group gameRoot) {
-        this.gameRoot = gameRoot;
-    }
-
+    /**
+     * Application starts
+     * @param primaryStage the primary stage of the game
+     * @throws Exception if errors occurred
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Main.class.getResource("LoadingScene.fxml"));
+        System.out.println(Main.class.getResource("LoadingScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
         primaryStage.setTitle("2048");
         primaryStage.getIcons().add(new Image(
@@ -60,6 +59,10 @@ public class Main extends Application {
 
     }
 
+    /**
+     * Runs the mains
+     * @param args the args
+     */
     public static void main(String[] args) {
         launch(args);
     }

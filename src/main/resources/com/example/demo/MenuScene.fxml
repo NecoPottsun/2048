@@ -21,7 +21,7 @@
    <children>
       <ImageView blendMode="SRC_ATOP" cache="true" fitHeight="900.0" layoutX="-71.0" layoutY="-39.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/stars-gdeec4ede1_1920.jpg" />
+            <Image url="@image/aesthetic-desktop-purple-night-m2g8dkn3svi5w9c8.jpg" />
          </image>
          <effect>
             <GaussianBlur radius="0.0" />
@@ -39,14 +39,14 @@
                         <Color green="0.5333333611488342" blue="1.0" />
                      </color>
                   </Stop>
-                  <Stop offset="0.006711409395973154">
+                  <Stop offset="0.006729475100942127">
                      <color>
                         <Color red="0.13450291752815247" green="0.6758772134780884" blue="0.9078947305679321" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
+                        <Color red="0.5368421077728271" green="0.24654971063137054" blue="0.5126510858535767" />
                      </color>
                   </Stop>
                </stops>
@@ -86,10 +86,5 @@
       <Pane fx:id="musicPane" layoutX="619.0" layoutY="40.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 18px;" visible="false" />
       <Rectangle fx:id="backgroundColorRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="35.0" layoutX="739.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="38.0" />
       <Button fx:id="openMusicPaneButton" layoutX="770.0" layoutY="14.0" mnemonicParsing="false" onAction="#openMusicPaneButtonOnAction" prefHeight="26.0" prefWidth="100.0" stylesheets="@css/style.css" text="Music" />
-      <Text fx:id="testText" fill="WHITE" layoutX="442.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-         <font>
-            <Font size="33.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>

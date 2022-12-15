@@ -16,6 +16,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Load all the stuffs when opening the Game
+ * @author Thanh Mai Duyen Trang
+ */
 public class LoadingController implements Initializable{
     private Stage primaryStage;
     @FXML
@@ -24,18 +28,23 @@ public class LoadingController implements Initializable{
     private Text progressNumber;
     @FXML
     private ProgressBar progressBar;
-
-
-    static final int WIDTH = 900;
-    static final int HEIGHT = 700;
-
+    /**
+     * Create all the initial values, do the very first stuffs
+     * when Loading Scene is created
+     * @param url the URL
+     * @param resourceBundle the resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        progressBar.setStyle("-fx-accent: #0d750b;");
+        progressBar.setStyle("-fx-accent: #8D65BE;");
        increaseProgress();
 
 
     }
+
+    /**
+     * Increase Progress after 1 second
+     */
     public void increaseProgress() {
         Task<Void> task = new Task<Void>() {
 
@@ -77,16 +86,19 @@ public class LoadingController implements Initializable{
         new Thread(task).start();
     }
 
+    /**
+     * After finish loading, it creates Menu Scene
+     * @throws IOException if errors occurred
+     */
     public void openMenuScene() throws IOException {
         primaryStage = (Stage) pane.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Main.class.getResource("MenuScene.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
+        Scene scene = new Scene(fxmlLoader.load(),Main.WIDTH , Main.HEIGHT);
         MenuController menuController = fxmlLoader.getController();
         MusicPaneController.playSoundtrack(SoundtrackDatabase.getInstance().getSoundtrackAtPosition(0));
    //     MenuController.beginTimer();
-        menuController.init();
         this.primaryStage.setScene(scene);
 
     }

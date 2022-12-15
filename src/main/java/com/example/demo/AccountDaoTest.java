@@ -6,12 +6,19 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+/**
+ * Test the AccountDao
+ * @author Thanh Mai Duyen Trang
+ */
 public class AccountDaoTest {
 
     private AccountDao accountDao = AccountDao.getInstance();
     private Account accountTest = new Account(3, "Beatrice",120000);
     private Account accountFind;
 
+    /**
+     * Find an account's id that is inside the account list of the AccountDao
+     */
     @Test
     public void findByIdPass() {
         accountFind = new Account(2, "Duyen",100);
@@ -21,6 +28,9 @@ public class AccountDaoTest {
                         && account.getScore() == accountFind.getScore()
                     );
     }
+    /**
+     * Not found an account's id inside the account list of the AccountDao
+     */
     @Test
     public void findByIdFail() {
         accountFind = new Account(1, "Neco",1000);
@@ -33,6 +43,9 @@ public class AccountDaoTest {
 
     }
 
+    /**
+     * Add an account successfully
+     */
     @Test
     public void addPass() {
         accountDao.add(accountTest);
@@ -43,13 +56,19 @@ public class AccountDaoTest {
                     account.getScore() == accountTest.getScore());
     }
 
-
+    /**
+     * Delete an account inside the account list of the AccountDao successfully
+     */
     @Test
     public void deletePass() {
         int initialListSize = accountDao.getAccounts().size();
         accountDao.delete(accountTest);
         assertEquals(initialListSize-1, accountDao.getAccounts().size());
     }
+    /**
+     * Delete an account inside the account list of the AccountDao failed
+     * because the account is not inside the account list
+     */
     @Test
     public void deleteFail() {
         accountTest =  new Account(4, "Neco-Neco",10000);

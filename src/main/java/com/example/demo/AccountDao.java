@@ -15,6 +15,7 @@ import java.util.List;
  * AccountDao.class is used to handle the functions that achieve data from the excel file
  * as well as write data to the file, so that we can also add and delete a specific account entity
  * in the file.
+ * @author Thanh Mai Duyen Trang
  */
 public class AccountDao implements Dao<Account>{
 
@@ -32,6 +33,9 @@ public class AccountDao implements Dao<Account>{
     private int rowNumber = 0;
     private int cellNumber = 0;
 
+    /**
+     * The constructor of AccountDao
+     */
     private AccountDao(){
         excelAcess("data/account.xls");
         // Achieve account list
@@ -39,9 +43,10 @@ public class AccountDao implements Dao<Account>{
     }
 
     /**
-     AccountDao.java follows the Singleton, because it only need to be
-     created once
-     */
+     * <code>getInstance()</code>help this AccountDao follows the Singleton, because it only needs to be
+     *  created once
+     * @return AccountDao
+     * */
     // Apply Singleton for AccountDao
     public static AccountDao getInstance(){
         if(instance == null){
@@ -50,12 +55,75 @@ public class AccountDao implements Dao<Account>{
         return instance;
     }
 
+    /**
+     * Gets the Account list of this AccountDao
+     * @return List of account of this AccountDao
+     */
     public List<Account> getAccounts() {
         return accounts;
     }
 
     /**
-     Find the account in the AccountList by using the account's id
+     * Gets the workbook of this AccountDao
+     * @return HSSFWorkbook
+     */
+    public static HSSFWorkbook getWorkbook() {
+        return workbook;
+    }
+
+    /**
+     * Gets the sheet inside the Excel file of this AccountDao
+     * @return HSSFSheet
+     */
+    public HSSFSheet getSheet() {
+        return sheet;
+    }
+
+    /**
+     * Gets the Excel file of this AccountDao
+     * @return File
+     */
+    public File getFile() {
+        return file;
+    }
+
+    /**
+     * Gets the FileInputStream of this AccountDao
+     * @return FileInputStream
+     */
+    public FileInputStream getFis() {
+        return fis;
+    }
+
+    /**
+     * Gets the FileOutputStream of this AccountDao
+     * @return FileOutputStream
+     */
+    public FileOutputStream getOut() {
+        return out;
+    }
+
+    /**
+     * Gets the number of rows inside the Excel sheet of this AccountDao
+     * @return rowNumber
+     */
+    public int getRowNumber() {
+        return rowNumber;
+    }
+
+    /**
+     * Gets the number of cells inside the excel sheet of this AccountDao
+     * @return cellNumber
+     */
+    public int getCellNumber() {
+        return cellNumber;
+    }
+
+    /**
+     * Find the account in the AccountList by using the account's id
+     * @param id the id of the account that want to search for
+     * @return <Code>Account</Code> if the id exists in the Account List of this AccountDao;
+     *          <Code>null</Code> if the id doesn't exist in the Account List;
      */
     @Override
     public Account findById(long id) {
@@ -70,8 +138,9 @@ public class AccountDao implements Dao<Account>{
     }
 
     /**
-     Retrieve all the account data from the Excel file
-     * */
+     * Retrieve all the account data from sheet in the Excel file of this AccountDao
+     * @return List of account
+     */
     @Override
     public List<Account> getAll() {
         for(Row row: sheet)
@@ -119,8 +188,8 @@ public class AccountDao implements Dao<Account>{
     }
 
     /**
-     * Add a new account to the excel file
-     * @param account
+     * Add a new account to sheet in the excel file
+     * @param account a new account that want to add
      */
     @Override
     public void add(Account account) {
@@ -143,8 +212,9 @@ public class AccountDao implements Dao<Account>{
 
     /**
      * delete an account in the excel file
-     * @param account
-     * @return
+     * @param account the account that want be deleted
+     * @return <code>True</code> found the account inside the account list and delete successful;
+     *          <code>False</code> the account not found in the account list, delete failed
      */
     @Override
     public Boolean delete(Account account) {
@@ -170,7 +240,7 @@ public class AccountDao implements Dao<Account>{
 
     /**
      * Print out all the accounts in the list in the system
-     * @param accountList
+     * @param accountList the list of account that want to be printed
      */
     public void PrintList(List<Account> accountList){
         for(Account account : accountList){
@@ -179,9 +249,9 @@ public class AccountDao implements Dao<Account>{
     }
 
     /**
-     * The method is to overwrite the excel file.
+     * Overwrites the Excel file.
      * Whenever there is any change to the list of account
-     * , it is used to update the data in the excel file.
+     * , it is used to update the data in the Excel file.
      */
     private void updatedExcelFile() {
         try {
@@ -204,9 +274,9 @@ public class AccountDao implements Dao<Account>{
     }
 
     /**
-     *This function is to open the excel file and then read
-     * every data in the first sheet
-     * */
+     *  Opens the Excel file and then read every data in the first sheet
+     * @param path the location of the Excel file
+     */
     private void excelAcess(String path){
         URL url = getClass().getResource(path);
         try {
@@ -232,7 +302,7 @@ public class AccountDao implements Dao<Account>{
 
     /**
      * Sort the account list by score in DESCENDING order
-     * @return accounts
+     * @return the list of account that is sorted
      */
     public List<Account> GetSortList(){
         Collections.sort(accounts);

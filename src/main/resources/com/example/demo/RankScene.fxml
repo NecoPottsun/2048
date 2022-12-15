@@ -11,16 +11,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #658354;" stylesheets="css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.RankSceneController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #DAC2F4;" stylesheets="css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.RankSceneController">
    <children>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="700.0" prefWidth="900.0" spacing="5.0">
          <children>
-            <Label text="2048" textFill="#ddead1">
+            <Label text="2048" textFill="#7844bc">
                <font>
                   <Font name="System Bold" size="64.0" />
                </font>
             </Label>
-            <Label text="Score Board" textFill="#ddead1">
+            <Label text="Score Board" textFill="#7844bc">
                <font>
                   <Font name="System Bold" size="50.0" />
                </font>

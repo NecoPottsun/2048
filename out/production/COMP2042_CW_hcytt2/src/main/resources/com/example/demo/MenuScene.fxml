@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" stylesheets="css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.MenuController">
+   <children>
+      <ImageView blendMode="SRC_ATOP" cache="true" fitHeight="900.0" layoutX="-71.0" layoutY="-39.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/aesthetic-desktop-purple-night-m2g8dkn3svi5w9c8.jpg" />
+         </image>
+         <effect>
+            <GaussianBlur radius="0.0" />
+         </effect>
+      </ImageView>
+      <Text fx:id="headerText" layoutX="316.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2048" textAlignment="CENTER" wrappingWidth="324.2386474609375" AnchorPane.bottomAnchor="479.90625" AnchorPane.leftAnchor="316.0" AnchorPane.rightAnchor="259.7613525390625" AnchorPane.topAnchor="92.40625">
+         <font>
+            <Font name="System Bold" size="96.0" />
+         </font>
+         <fill>
+            <RadialGradient centerX="0.839779005524862" centerY="0.495260663507109" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color green="0.5333333611488342" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.13450291752815247" green="0.6758772134780884" blue="0.9078947305679321" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5368421077728271" green="0.24654971063137054" blue="0.5126510858535767" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Text>
+      <ColorPicker fx:id="colorPicker" layoutX="789.0" layoutY="128.0" onAction="#colorPickerOnAction" prefHeight="22.0" prefWidth="89.0" />
+      <TextField fx:id="usernameTextField" layoutX="357.0" layoutY="434.0" prefHeight="35.0" prefWidth="242.0" promptText="Player 1" style="-fx-background-radius: 50;" />
+      <VBox alignment="CENTER" layoutX="358.0" layoutY="475.0" prefHeight="200.0" prefWidth="229.0" spacing="10.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="247.0" spacing="5.0">
+               <children>
+                  <Button fx:id="easyStartButton" mnemonicParsing="false" onAction="#easyStartButtonOnAction" prefHeight="46.0" prefWidth="160.0" styleClass="button" stylesheets="@css/style.css" text="Easy">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="hardStartButton" mnemonicParsing="false" onAction="#hardStartButtonOnAction" prefHeight="46.0" prefWidth="160.0" styleClass="button" stylesheets="@css/style.css" text="Hard">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="scoreBoardButton" mnemonicParsing="false" onAction="#scoreBoardButtonOnAction" prefHeight="46.0" prefWidth="160.0" styleClass="button" stylesheets="@css/style.css" text="Score Board">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="quitButton" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="46.0" prefWidth="160.0" styleClass="button" stylesheets="@css/style.css" text="Quit">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Pane fx:id="musicPane" layoutX="619.0" layoutY="40.0" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 18px;" visible="false" />
+      <Rectangle fx:id="backgroundColorRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="35.0" layoutX="739.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="38.0" />
+      <Button fx:id="openMusicPaneButton" layoutX="770.0" layoutY="14.0" mnemonicParsing="false" onAction="#openMusicPaneButtonOnAction" prefHeight="26.0" prefWidth="100.0" stylesheets="@css/style.css" text="Music" />
+   </children>
+</AnchorPane>

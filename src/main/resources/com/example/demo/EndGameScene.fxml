@@ -10,14 +10,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainAnchorPane" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #658354;" stylesheets="css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.EndGameController">
+<AnchorPane fx:id="mainAnchorPane" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #DAC2F4;" stylesheets="css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.EndGameController">
    <children>
-      <Label fx:id="headerText" layoutX="241.0" layoutY="86.0" text="Game Over" textFill="#ddead1">
+      <Label fx:id="headerText" layoutX="241.0" layoutY="86.0" text="Game Over" textFill="#7844bc">
          <font>
             <Font name="System Bold" size="80.0" />
          </font>
       </Label>
-      <Text fx:id="scoreText" fill="#ddead1" layoutX="293.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your score:">
+      <Text fx:id="scoreText" fill="#7844bc" layoutX="293.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your score:">
          <font>
             <Font size="40.0" />
          </font>
@@ -47,24 +47,24 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Button>
-      <Text fx:id="timePlayText" fill="#ddead1" layoutX="297.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time: 00:00">
+      <Text fx:id="timePlayText" fill="#7844bc" layoutX="297.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time: 00:00">
          <font>
             <Font size="33.0" />
          </font>
       </Text>
-      <HBox fx:id="congratulationHBox" layoutX="273.0" layoutY="193.0" prefHeight="37.0" prefWidth="200.0" visible="false">
+      <HBox fx:id="congratulationHBox" layoutX="265.0" layoutY="193.0" prefHeight="37.0" prefWidth="200.0">
          <children>
-            <ImageView fx:id="sparkleImage1" fitHeight="28.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="sparkleImage1" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/sparkles.png" />
                </image>
             </ImageView>
-            <Text fx:id="congratulationText" fill="#f2d938" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations! you're the top one">
+            <Text fx:id="congratulationText" fill="#6a00ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations! you're the top one">
                <font>
                   <Font size="19.0" />
                </font>
             </Text>
-            <ImageView fx:id="sparkleImage2" fitHeight="28.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="sparkleImage2" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/sparkles.png" />
                </image>

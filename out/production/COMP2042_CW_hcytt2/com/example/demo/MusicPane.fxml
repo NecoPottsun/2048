@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane prefHeight="70.0" prefWidth="250.0" style="-fx-background-radius: 18px; -fx-background-color: #ffffff; -fx-border-color: 18px;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.MusicPaneController">
+<Pane prefHeight="70.0" prefWidth="250.0" style="-fx-background-radius: 18px; -fx-background-color: #EFE4FA; -fx-border-color: 18px;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.MusicPaneController">
    <children>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="66.0" prefWidth="250.0" spacing="5.0">
          <children>

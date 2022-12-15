@@ -32,24 +32,21 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * This class is to handle the MenuScene of the game
+ * @author Thanh Mai Duyen Trang
+ */
 public class MenuController implements Initializable {
 
     private Stage primaryStage;
-    private Scene currentScene;
-    private Parent parentRoot;
 
-    static MediaPlayer mediaPlayer;
 
     private static int HARD = 4;
     private static int EASY = 5;
 
     private GameScene game;
 
-    private String colorPicked = "#3F3B6C";
-
-
-    static final int WIDTH = 900;
-    static final int HEIGHT =700;
+    private String colorPicked = "#5C2F81";
     @FXML
     private AnchorPane pane;
 
@@ -64,55 +61,37 @@ public class MenuController implements Initializable {
     @FXML
     private Pane musicPane;
 
-    @FXML
-    private MusicPaneController musicPaneController;
 
-
-    private int i = 0;
-    @FXML
-    private Text testText;
+    /**
+     * Create all the initial values, do the very first stuffs
+     * when MenuScene is created
+     * @param url the url
+     * @param resourceBundle the resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         colorPicker.setValue(Color.valueOf(colorPicked));
         backgroundColorRectangle.setFill(Paint.valueOf(colorPicked));
-//
-//        timeLineTest();
-//
 
 
     }
-//    private void timeLineTest(){
-//        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-//            i++;
-//            testText.setText(String.valueOf(i));
-//            if(i == 10){
-//
-//                FXMLLoader fxmlLoader = new FXMLLoader();
-//                fxmlLoader.setLocation(Main.class.getResource("RankScene.fxml"));
-//
-//                Scene scene = null;
-//                try {
-//                    scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
-//                    primaryStage.setScene(scene);
-//                    primaryStage.setResizable(false);
-//                    primaryStage.show();
-//                } catch (IOException ex) {
-//                    throw new RuntimeException(ex);
-//                }
-//
-//            }
-//        }));
-//        timeline.setCycleCount(Animation.INDEFINITE);
-//        timeline.play();
-//    }
-    public void init(){
-   //     String path = "music/soundtrack1.mp3";
-    //    MusicPaneController.playSoundtrack(SoundtrackDatabase.getInstance().getSoundtrackAtPosition(1));
-//        MusicPaneController.playSoundtrack(SoundtrackDatabase.getInstance().getSoundtrackAtPosition(0));
+
+    /**
+     * Gets the color picked from the Color Picker in the Menu Scene
+     * @return color picked from the Color Picker in the Menu Scene
+     *<p>
+     *     Default value: #5C2F81
+     *</p>
+     */
+    public String getColorPicked() {
+        return colorPicked;
     }
 
-
+    /**
+     * Loads the music pane in the Menu Scene
+     * @param pane the music pane in the Scene
+     */
     public static void loadMusicPane (Pane pane)  {
         FXMLLoader fxmlLoader = new FXMLLoader();
         Pane newLoadedPane = null;
@@ -126,6 +105,11 @@ public class MenuController implements Initializable {
         }
 
     }
+
+    /**
+     * Opens the music pane inside the Menu Scene
+     * @param event the event listened when the Music button is clicked
+     */
     @FXML
     protected  void openMusicPaneButtonOnAction(ActionEvent event){
         loadMusicPane(musicPane);
@@ -137,6 +121,10 @@ public class MenuController implements Initializable {
         }
     }
 
+    /**
+     * Listens the chosen color to set the background color of the Game Scene
+     * @param event the event listened when the color is changed
+     */
     @FXML
     protected void colorPickerOnAction(ActionEvent event){
         this.primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -149,7 +137,10 @@ public class MenuController implements Initializable {
 
 
     }
-
+    /**
+     * Opens the easy mode by passing the number of plain 5x5 grid of the Game Scene
+     * @param event the event listened when the Easy button is clicked
+     */
     @FXML
     protected void easyStartButtonOnAction(ActionEvent event){
 
@@ -163,6 +154,10 @@ public class MenuController implements Initializable {
 
         this.primaryStage.show();
     }
+    /**
+     * Opens the hard mode by passing the number of plain 4x4 grid of the Game Scene
+     * @param event the event listened when the Hard button is clicked
+     */
     @FXML
     protected void hardStartButtonOnAction(ActionEvent event){
 
@@ -176,18 +171,29 @@ public class MenuController implements Initializable {
 
         this.primaryStage.show();
     }
+    /**
+     * Opens the new Rank Scene when clicking the Score Board button inside
+     * the MenuScene
+     * @param event the event listened when the Score Board button is clicked
+     * @throws IOException if errors occurred
+     */
     @FXML
     protected void scoreBoardButtonOnAction(ActionEvent event) throws IOException {
         this.primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Main.class.getResource("RankScene.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(),WIDTH , HEIGHT);
+        Scene scene = new Scene(fxmlLoader.load(),Main.WIDTH , Main.HEIGHT);
         RankSceneController rankSceneController = fxmlLoader.getController();
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
+
+    /**
+     * Terminates the game system
+     * @param event the event listened when the Quit button is clicked
+     */
     @FXML
     protected void quitButtonOnAction(ActionEvent event){
         this.primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -203,6 +209,10 @@ public class MenuController implements Initializable {
         }
     }
 
+    /**
+     * Creates a new Game Scene with chosen level
+     * @param level the game level that had been chosen
+     */
     private void openGameScene(int level){
 
         // Initialize a new game
@@ -222,7 +232,7 @@ public class MenuController implements Initializable {
 
         // Initialize GameScene and EndGameScene
         Group gameRoot = new Group();
-        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Paint.valueOf(colorPicked));
+        Scene gameScene = new Scene(gameRoot, Main.WIDTH, Main.HEIGHT, Paint.valueOf(colorPicked));
 
 //        Group endgameRoot = new Group();
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -230,7 +240,7 @@ public class MenuController implements Initializable {
 
         Scene endGameScene = null;
         try {
-            endGameScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
+            endGameScene = new Scene(fxmlLoader.load(), Main.WIDTH, Main.HEIGHT);
             endGameController = fxmlLoader.getController();
         } catch (IOException e) {
             throw new RuntimeException(e);
