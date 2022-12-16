@@ -14,6 +14,9 @@ git clone https://github.com/NecoPottsun/COMP2042_CW_hcytt2.git
 ```
 Or if you are using GitHub Desktop, simply do: `File->Clone Repository->URL` and paste the link `https://github.com/NecoPottsun/COMP2042_CW_hcytt2.git` in the `URL or username/reposity` box
 
+Please download the libraries to run the game: 
+- JUnit-4.13.2
+
 ## Javadoc documentation path
 
 the Javadoc documentation is located in: 
