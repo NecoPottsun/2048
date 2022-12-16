@@ -16,7 +16,8 @@ Or if you are using GitHub Desktop, simply do: `File->Clone Repository->URL` and
 
 Please download the libraries to run the game: 
 - JUnit-4.13.2
-
+- Hamcrest-all-1.3
+- Hamcret-library-1.3
 ## Javadoc documentation path
 
 the Javadoc documentation is located in: 
